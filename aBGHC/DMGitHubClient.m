@@ -26,12 +26,12 @@ NSString *homeScreenRepositories = @"Repositories";
 NSString *homeScreenGists = @"Gists";
 
 typedef enum {
-    UserNotifications = 0,
-    AllRepositories,
-    UserRepositories,
-    StarredRepositories,
-    WatchedRepositories,
-    SearchRepositories,
+  UserNotifications = 0,
+  AllRepositories,
+  UserRepositories,
+  StarredRepositories,
+  WatchedRepositories,
+  SearchRepositories,
 } githubOperation;
 
 @implementation DMGitHubClient
@@ -40,10 +40,11 @@ typedef enum {
 
 + (DMGitHubClient *)sharedInstance {
     static DMGitHubClient *client = nil;
-    
+    //        client = [[DMGitHubClient alloc] initWithBaseURL:[NSURL URLWithString:aBGHC_GitHubApiUrl]];
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        client = [[DMGitHubClient alloc] initWithBaseURL:[NSURL URLWithString:aBGHC_GitHubApiUrl]];
+      client = [[DMGitHubClient alloc] init];
     });
     
     return client;
@@ -53,7 +54,7 @@ typedef enum {
     static NSArray *homeScreen = nil;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        homeScreen = @[homeScreenNotifications, homeScreenRepositories, homeScreenGists];
+      homeScreen = @[homeScreenNotifications, homeScreenRepositories, homeScreenGists];
     });
     return homeScreen;
 }
@@ -62,7 +63,7 @@ typedef enum {
     static NSArray *searchScope = nil;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched];
+      searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched];
     });
     return searchScope;
 }
@@ -72,19 +73,14 @@ typedef enum {
     self = [super init];
     
     if (self) {
-        _username    = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_Username];
-        _accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AccessToken];
-        _tokenType   = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_TokenType];
-        if (_accessToken && _tokenType)
-            _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
-                            aBGHC_AccessToken, _accessToken,
-                            aBGHC_TokenType, _tokenType];
-        else _httpHeaderTokenString = @"";
-        
-        // default operation, AFJSONRequestOperation
-        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-        // Register for JSON for default type
-        [self setDefaultHeader:@"Accept" value:aBGHC_DefaultHTTPType];
+      _username    = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_Username];
+      _accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AccessToken];
+      _tokenType   = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_TokenType];
+      if (_accessToken && _tokenType)
+          _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
+                          aBGHC_AccessToken, _accessToken,
+                          aBGHC_TokenType, _tokenType];
+      else _httpHeaderTokenString = @"";
     }
     
     return self;
@@ -131,7 +127,7 @@ typedef enum {
 //        }
 //    }];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/norificaions?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
+    NSString *urlString = [NSString stringWithFormat:@"%@/notifications?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -165,10 +161,7 @@ typedef enum {
     5. Update ref
     */
     
-    NSLog(@"Commit Information : %@", commitInformation);
-
-    NSError *error = nil;
-    
+    NSLog(@"Commit Information : %@", commitInformation);    
     
     // Format commitInformation Dictionary continually to make this work
     return NO;
