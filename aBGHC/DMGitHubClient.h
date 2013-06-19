@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking/AFNetworking.h>
 
-@interface DMGitHubClient : NSObject <NSURLConnectionDelegate>
+typedef void (^JSONResponseBlock)(NSArray *json);
+
+@interface DMGitHubClient : AFHTTPClient
 
 typedef enum {
     MINE,
@@ -30,7 +33,8 @@ typedef enum {
 - (NSArray *)loadInformationForRepository:repositoryContentType withOptions:(NSDictionary *)options;
 
 - (NSDictionary *)loadFileWithInformation:(NSDictionary *)fileInformation;
-- (NSArray *)getNotificationsForUser;
+//- (NSArray *)getNotificationsForUser;
+- (void)getNotificationsForUserWithCallback:(JSONResponseBlock)callback;
 
 - (NSArray *)searchForRepositoriesWithCriteria:(NSDictionary *)criteria;
 - (NSArray *)searchForUsersWithCriteria:(NSDictionary *)criteria;

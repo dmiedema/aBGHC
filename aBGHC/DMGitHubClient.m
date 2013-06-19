@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Daniel Miedema. All rights reserved.
 
 #import "DMGitHubClient.h"
-// #import <AFNetworking/AFNetworking.h>
 
 @interface DMGitHubClient()
 
@@ -40,10 +39,12 @@ typedef enum {
 #pragma mark Class Methods
 
 + (DMGitHubClient *)sharedInstance {
-    static DMGitHubClient *client;
+    static DMGitHubClient *client = nil;
     
-    if (!client)
-        client = [[DMGitHubClient alloc] init];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        client = [[DMGitHubClient alloc] initWithBaseURL:[NSURL URLWithString:aBGHC_GitHubApiUrl]];
+    });
     
     return client;
 }
@@ -51,7 +52,6 @@ typedef enum {
 + (NSArray *)homeScreenOptions {
     static NSArray *homeScreen = nil;
     static dispatch_once_t once;
-    
     dispatch_once(&once, ^{
         homeScreen = @[homeScreenNotifications, homeScreenRepositories, homeScreenGists];
     });
@@ -61,7 +61,6 @@ typedef enum {
 + (NSArray *)searchScopeOptions {
     static NSArray *searchScope = nil;
     static dispatch_once_t once;
-    
     dispatch_once(&once, ^{
         searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched];
     });
@@ -81,6 +80,11 @@ typedef enum {
                             aBGHC_AccessToken, _accessToken,
                             aBGHC_TokenType, _tokenType];
         else _httpHeaderTokenString = @"";
+        
+        // default operation, AFJSONRequestOperation
+        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        // Register for JSON for default type
+        [self setDefaultHeader:@"Accept" value:aBGHC_DefaultHTTPType];
     }
     
     return self;
@@ -102,32 +106,46 @@ typedef enum {
 }
 
 - (NSDictionary *)loadFileWithInformation:(NSDictionary *)fileInformation {
+    
     return nil;
 }
 
-- (NSArray *)getNotificationsForUser {
-    NSString *urlString = [NSString stringWithFormat:@"%@/notificiations?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
+- (void)getNotificationsForUserWithCallback:(JSONResponseBlock)callback {
+//    NSString *urlString = [NSString stringWithFormat:@"%@/notificiations?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
+//    
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+//        
+//    NSError *error = nil;
+//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//    __block NSArray *retArray = nil;
+//    
+//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *returnData, NSError *err) {
+//        if (!err) {
+//            NSArray *JSONArray = [self translateNSDataToJsonArray:returnData andError:error];
+//            retArray = JSONArray;
+//            [[NSNotificationCenter defaultCenter] postNotificationName:aBGHC_Model_NotificationsRecieved object:JSONArray];
+//        } else {
+//            NSLog(@"Error recieving notificaions");
+//            NSLog(@"TRACE : DMGitHubClient -- getNotificationsForUser -- ");
+//            NSLog(@"Error : %@", err);
+//        }
+//    }];
     
+    NSString *urlString = [NSString stringWithFormat:@"%@/norificaions?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     
-    [request setValue:aGHB_DefaultHTTPType forHTTPHeaderField:@"Accept"];
-
-    NSError *error = nil;
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    __block NSArray *retArray = nil;
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *returnData, NSError *err) {
-        if (!err) {
-            NSArray *JSONArray = [self translateNSDataToJsonArray:returnData andError:error];
-            retArray = JSONArray;
-            [[NSNotificationCenter defaultCenter] postNotificationName:aBGHC_Model_NotificationsRecieved object:JSONArray];
-        } else {
-            NSLog(@"Error recieving notificaions");
-            NSLog(@"TRACE : DMGitHubClient -- getNotificationsForUser -- ");
-            NSLog(@"Error : %@", err);
-        }
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        if ([JSON isKindOfClass:[NSArray class]])
+            callback(JSON);
+        else
+            callback([[NSArray alloc] initWithObjects:JSON, nil]);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Error recieving notificaions");
+        NSLog(@"TRACE : DMGitHubClient -- getNotificationsForUser -- ");
+        NSLog(@"Error : %@", error);
+        NSLog(@"Error JSON: %@", JSON);
     }];
-    return retArray;
+    [operation start];
 }
 
 - (NSArray *)searchForRepositoriesWithCriteria:(NSDictionary *)criteria {
