@@ -11,18 +11,18 @@
 
 typedef void (^JSONResponseBlock)(NSArray *json);
 
-@interface DMGitHubClient : AFHTTPClient
+@interface DMGitHubClient : NSObject
 
 typedef enum {
-    MINE,
-    STARRED,
-    WATCHED,
+  MINE,
+  STARRED,
+  WATCHED,
 } repositoryTypesToLoad;
 
 typedef enum {
-    README,
-    COMMITS,
-    FILES,
+  README,
+  COMMITS,
+  FILES,
 } repositoryContentType;
 
 + (DMGitHubClient *)sharedInstance;
@@ -33,7 +33,7 @@ typedef enum {
 - (NSArray *)loadInformationForRepository:repositoryContentType withOptions:(NSDictionary *)options;
 
 - (NSDictionary *)loadFileWithInformation:(NSDictionary *)fileInformation;
-//- (NSArray *)getNotificationsForUser;
+
 - (void)getNotificationsForUserWithCallback:(JSONResponseBlock)callback;
 
 - (NSArray *)searchForRepositoriesWithCriteria:(NSDictionary *)criteria;
