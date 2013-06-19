@@ -107,26 +107,6 @@ typedef enum {
 }
 
 - (void)getNotificationsForUserWithCallback:(JSONResponseBlock)callback {
-//    NSString *urlString = [NSString stringWithFormat:@"%@/notificiations?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
-//    
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
-//        
-//    NSError *error = nil;
-//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    __block NSArray *retArray = nil;
-//    
-//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *returnData, NSError *err) {
-//        if (!err) {
-//            NSArray *JSONArray = [self translateNSDataToJsonArray:returnData andError:error];
-//            retArray = JSONArray;
-//            [[NSNotificationCenter defaultCenter] postNotificationName:aBGHC_Model_NotificationsRecieved object:JSONArray];
-//        } else {
-//            NSLog(@"Error recieving notificaions");
-//            NSLog(@"TRACE : DMGitHubClient -- getNotificationsForUser -- ");
-//            NSLog(@"Error : %@", err);
-//        }
-//    }];
-    
     NSString *urlString = [NSString stringWithFormat:@"%@/notifications?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     
