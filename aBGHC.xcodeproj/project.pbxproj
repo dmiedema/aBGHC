@@ -1,0 +1,628 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16B9A04A1770228C00A15617 /* DMGitHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A0491770228C00A15617 /* DMGitHubClient.m */; };
+		16B9A04F1770229800A15617 /* DMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A04C1770229800A15617 /* DMCollectionViewController.m */; };
+		16B9A0501770229800A15617 /* DMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A04E1770229800A15617 /* DMTableViewController.m */; };
+		16B9A0521770229D00A15617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B9A0511770229D00A15617 /* Main.storyboard */; };
+		16B9A05C1770240500A15617 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0541770240500A15617 /* Accelerate.framework */; };
+		16B9A05D1770240500A15617 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0551770240500A15617 /* Accounts.framework */; };
+		16B9A05E1770240500A15617 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0561770240500A15617 /* MessageUI.framework */; };
+		16B9A05F1770240500A15617 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0571770240500A15617 /* QuartzCore.framework */; };
+		16B9A0601770240500A15617 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0581770240500A15617 /* QuickLook.framework */; };
+		16B9A0611770240500A15617 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0591770240500A15617 /* Security.framework */; };
+		16B9A0621770240500A15617 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A05A1770240500A15617 /* Social.framework */; };
+		16B9A0631770240500A15617 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A05B1770240500A15617 /* Twitter.framework */; };
+		16B9A0851770B56400A15617 /* Commit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A0841770B56400A15617 /* Commit.m */; };
+		16B9A0881770B56500A15617 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A0871770B56500A15617 /* User.m */; };
+		16B9A08B1770B56500A15617 /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A08A1770B56500A15617 /* Repository.m */; };
+		16DC83201770012100523125 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC831F1770012100523125 /* UIKit.framework */; };
+		16DC83221770012100523125 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC83211770012100523125 /* Foundation.framework */; };
+		16DC83241770012100523125 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC83231770012100523125 /* CoreGraphics.framework */; };
+		16DC83261770012100523125 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC83251770012100523125 /* CoreData.framework */; };
+		16DC832C1770012100523125 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16DC832A1770012100523125 /* InfoPlist.strings */; };
+		16DC832E1770012100523125 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DC832D1770012100523125 /* main.m */; };
+		16DC83321770012100523125 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DC83311770012100523125 /* DMAppDelegate.m */; };
+		16DC83341770012100523125 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DC83331770012100523125 /* Default.png */; };
+		16DC83361770012100523125 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DC83351770012100523125 /* Default@2x.png */; };
+		16DC83381770012100523125 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DC83371770012100523125 /* Default-568h@2x.png */; };
+		16DC833B1770012100523125 /* aBGHC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16DC83391770012100523125 /* aBGHC.xcdatamodeld */; };
+		16DC83431770012100523125 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC83421770012100523125 /* SenTestingKit.framework */; };
+		16DC83441770012100523125 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC831F1770012100523125 /* UIKit.framework */; };
+		16DC83451770012100523125 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC83211770012100523125 /* Foundation.framework */; };
+		16DC83461770012100523125 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC83251770012100523125 /* CoreData.framework */; };
+		16DC834E1770012100523125 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16DC834C1770012100523125 /* InfoPlist.strings */; };
+		16DC83511770012100523125 /* aBGHCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DC83501770012100523125 /* aBGHCTests.m */; };
+		6DB02224FC004A6985430C97 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 983C5FD66C2B4F45A5BAFA58 /* libPods.a */; };
+		C34CCB5F1771735E0052ECC5 /* DMGithubAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C34CCB5E1771735E0052ECC5 /* DMGithubAPIClient.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16DC83471770012100523125 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16DC83141770012100523125 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16DC831B1770012100523125;
+			remoteInfo = aBGHC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16B9A0481770228C00A15617 /* DMGitHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMGitHubClient.h; sourceTree = "<group>"; };
+		16B9A0491770228C00A15617 /* DMGitHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMGitHubClient.m; sourceTree = "<group>"; };
+		16B9A04B1770229800A15617 /* DMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCollectionViewController.h; sourceTree = "<group>"; };
+		16B9A04C1770229800A15617 /* DMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCollectionViewController.m; sourceTree = "<group>"; };
+		16B9A04D1770229800A15617 /* DMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTableViewController.h; sourceTree = "<group>"; };
+		16B9A04E1770229800A15617 /* DMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTableViewController.m; sourceTree = "<group>"; };
+		16B9A0511770229D00A15617 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		16B9A053177022AF00A15617 /* aBGHCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aBGHCConstants.h; sourceTree = "<group>"; };
+		16B9A0541770240500A15617 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		16B9A0551770240500A15617 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		16B9A0561770240500A15617 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		16B9A0571770240500A15617 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		16B9A0581770240500A15617 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		16B9A0591770240500A15617 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		16B9A05A1770240500A15617 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		16B9A05B1770240500A15617 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		16B9A0831770B56400A15617 /* Commit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commit.h; sourceTree = "<group>"; };
+		16B9A0841770B56400A15617 /* Commit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commit.m; sourceTree = "<group>"; };
+		16B9A0861770B56500A15617 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		16B9A0871770B56500A15617 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		16B9A0891770B56500A15617 /* Repository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repository.h; sourceTree = "<group>"; };
+		16B9A08A1770B56500A15617 /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
+		16DC831C1770012100523125 /* aBGHC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aBGHC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16DC831F1770012100523125 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		16DC83211770012100523125 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		16DC83231770012100523125 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		16DC83251770012100523125 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		16DC83291770012100523125 /* aBGHC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "aBGHC-Info.plist"; sourceTree = "<group>"; };
+		16DC832B1770012100523125 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		16DC832D1770012100523125 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		16DC832F1770012100523125 /* aBGHC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "aBGHC-Prefix.pch"; sourceTree = "<group>"; };
+		16DC83301770012100523125 /* DMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMAppDelegate.h; sourceTree = "<group>"; };
+		16DC83311770012100523125 /* DMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegate.m; sourceTree = "<group>"; };
+		16DC83331770012100523125 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		16DC83351770012100523125 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		16DC83371770012100523125 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		16DC833A1770012100523125 /* aBGHC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = aBGHC.xcdatamodel; sourceTree = "<group>"; };
+		16DC83411770012100523125 /* aBGHCTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aBGHCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16DC83421770012100523125 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		16DC834B1770012100523125 /* aBGHCTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "aBGHCTests-Info.plist"; sourceTree = "<group>"; };
+		16DC834D1770012100523125 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		16DC834F1770012100523125 /* aBGHCTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aBGHCTests.h; sourceTree = "<group>"; };
+		16DC83501770012100523125 /* aBGHCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aBGHCTests.m; sourceTree = "<group>"; };
+		81A6606AC6284644A38E6231 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		983C5FD66C2B4F45A5BAFA58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C34CCB5D1771735E0052ECC5 /* DMGithubAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMGithubAPIClient.h; sourceTree = "<group>"; };
+		C34CCB5E1771735E0052ECC5 /* DMGithubAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMGithubAPIClient.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16DC83191770012100523125 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B9A05C1770240500A15617 /* Accelerate.framework in Frameworks */,
+				16B9A05D1770240500A15617 /* Accounts.framework in Frameworks */,
+				16B9A05E1770240500A15617 /* MessageUI.framework in Frameworks */,
+				16B9A05F1770240500A15617 /* QuartzCore.framework in Frameworks */,
+				16B9A0601770240500A15617 /* QuickLook.framework in Frameworks */,
+				16B9A0611770240500A15617 /* Security.framework in Frameworks */,
+				16B9A0621770240500A15617 /* Social.framework in Frameworks */,
+				16B9A0631770240500A15617 /* Twitter.framework in Frameworks */,
+				16DC83241770012100523125 /* CoreGraphics.framework in Frameworks */,
+				16DC83201770012100523125 /* UIKit.framework in Frameworks */,
+				16DC83221770012100523125 /* Foundation.framework in Frameworks */,
+				16DC83261770012100523125 /* CoreData.framework in Frameworks */,
+				6DB02224FC004A6985430C97 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16DC833D1770012100523125 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16DC83431770012100523125 /* SenTestingKit.framework in Frameworks */,
+				16DC83441770012100523125 /* UIKit.framework in Frameworks */,
+				16DC83451770012100523125 /* Foundation.framework in Frameworks */,
+				16DC83461770012100523125 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16B9A0641770325200A15617 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16B9A0481770228C00A15617 /* DMGitHubClient.h */,
+				16B9A0491770228C00A15617 /* DMGitHubClient.m */,
+				C34CCB5D1771735E0052ECC5 /* DMGithubAPIClient.h */,
+				C34CCB5E1771735E0052ECC5 /* DMGithubAPIClient.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		16B9A0651770325700A15617 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				16B9A04B1770229800A15617 /* DMCollectionViewController.h */,
+				16B9A04C1770229800A15617 /* DMCollectionViewController.m */,
+				16B9A04D1770229800A15617 /* DMTableViewController.h */,
+				16B9A04E1770229800A15617 /* DMTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		16B9A0661770325E00A15617 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		16B9A07917703BA100A15617 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				16DC83391770012100523125 /* aBGHC.xcdatamodeld */,
+				16B9A0891770B56500A15617 /* Repository.h */,
+				16B9A08A1770B56500A15617 /* Repository.m */,
+				16B9A0861770B56500A15617 /* User.h */,
+				16B9A0871770B56500A15617 /* User.m */,
+				16B9A0831770B56400A15617 /* Commit.h */,
+				16B9A0841770B56400A15617 /* Commit.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		16DC83131770012100523125 = {
+			isa = PBXGroup;
+			children = (
+				16DC83271770012100523125 /* aBGHC */,
+				16DC83491770012100523125 /* aBGHCTests */,
+				16DC831E1770012100523125 /* Frameworks */,
+				16DC831D1770012100523125 /* Products */,
+				81A6606AC6284644A38E6231 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		16DC831D1770012100523125 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16DC831C1770012100523125 /* aBGHC.app */,
+				16DC83411770012100523125 /* aBGHCTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16DC831E1770012100523125 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16B9A0541770240500A15617 /* Accelerate.framework */,
+				16B9A0551770240500A15617 /* Accounts.framework */,
+				16B9A0561770240500A15617 /* MessageUI.framework */,
+				16B9A0571770240500A15617 /* QuartzCore.framework */,
+				16B9A0581770240500A15617 /* QuickLook.framework */,
+				16B9A0591770240500A15617 /* Security.framework */,
+				16B9A05A1770240500A15617 /* Social.framework */,
+				16B9A05B1770240500A15617 /* Twitter.framework */,
+				16DC831F1770012100523125 /* UIKit.framework */,
+				16DC83211770012100523125 /* Foundation.framework */,
+				16DC83231770012100523125 /* CoreGraphics.framework */,
+				16DC83251770012100523125 /* CoreData.framework */,
+				16DC83421770012100523125 /* SenTestingKit.framework */,
+				983C5FD66C2B4F45A5BAFA58 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		16DC83271770012100523125 /* aBGHC */ = {
+			isa = PBXGroup;
+			children = (
+				16B9A0641770325200A15617 /* Model */,
+				16B9A0661770325E00A15617 /* Views */,
+				16B9A0651770325700A15617 /* ViewControllers */,
+				16DC83301770012100523125 /* DMAppDelegate.h */,
+				16DC83311770012100523125 /* DMAppDelegate.m */,
+				16B9A07917703BA100A15617 /* CoreData */,
+				16B9A0511770229D00A15617 /* Main.storyboard */,
+				16DC83281770012100523125 /* Supporting Files */,
+			);
+			path = aBGHC;
+			sourceTree = "<group>";
+		};
+		16DC83281770012100523125 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				16B9A053177022AF00A15617 /* aBGHCConstants.h */,
+				16DC83291770012100523125 /* aBGHC-Info.plist */,
+				16DC832A1770012100523125 /* InfoPlist.strings */,
+				16DC832D1770012100523125 /* main.m */,
+				16DC832F1770012100523125 /* aBGHC-Prefix.pch */,
+				16DC83331770012100523125 /* Default.png */,
+				16DC83351770012100523125 /* Default@2x.png */,
+				16DC83371770012100523125 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		16DC83491770012100523125 /* aBGHCTests */ = {
+			isa = PBXGroup;
+			children = (
+				16DC834F1770012100523125 /* aBGHCTests.h */,
+				16DC83501770012100523125 /* aBGHCTests.m */,
+				16DC834A1770012100523125 /* Supporting Files */,
+			);
+			path = aBGHCTests;
+			sourceTree = "<group>";
+		};
+		16DC834A1770012100523125 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				16DC834B1770012100523125 /* aBGHCTests-Info.plist */,
+				16DC834C1770012100523125 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16DC831B1770012100523125 /* aBGHC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16DC83541770012100523125 /* Build configuration list for PBXNativeTarget "aBGHC" */;
+			buildPhases = (
+				81D0E46652C243D4A5E80C36 /* Check Pods Manifest.lock */,
+				16DC83181770012100523125 /* Sources */,
+				16DC83191770012100523125 /* Frameworks */,
+				16DC831A1770012100523125 /* Resources */,
+				08A720D98B2C4A9FB38AC958 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = aBGHC;
+			productName = aBGHC;
+			productReference = 16DC831C1770012100523125 /* aBGHC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		16DC83401770012100523125 /* aBGHCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16DC83571770012100523125 /* Build configuration list for PBXNativeTarget "aBGHCTests" */;
+			buildPhases = (
+				16DC833C1770012100523125 /* Sources */,
+				16DC833D1770012100523125 /* Frameworks */,
+				16DC833E1770012100523125 /* Resources */,
+				16DC833F1770012100523125 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16DC83481770012100523125 /* PBXTargetDependency */,
+			);
+			name = aBGHCTests;
+			productName = aBGHCTests;
+			productReference = 16DC83411770012100523125 /* aBGHCTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16DC83141770012100523125 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DM;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Daniel Miedema";
+			};
+			buildConfigurationList = 16DC83171770012100523125 /* Build configuration list for PBXProject "aBGHC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 16DC83131770012100523125;
+			productRefGroup = 16DC831D1770012100523125 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16DC831B1770012100523125 /* aBGHC */,
+				16DC83401770012100523125 /* aBGHCTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16DC831A1770012100523125 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16DC832C1770012100523125 /* InfoPlist.strings in Resources */,
+				16B9A0521770229D00A15617 /* Main.storyboard in Resources */,
+				16DC83341770012100523125 /* Default.png in Resources */,
+				16DC83361770012100523125 /* Default@2x.png in Resources */,
+				16DC83381770012100523125 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16DC833E1770012100523125 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16DC834E1770012100523125 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08A720D98B2C4A9FB38AC958 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		16DC833F1770012100523125 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		81D0E46652C243D4A5E80C36 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16DC83181770012100523125 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16DC832E1770012100523125 /* main.m in Sources */,
+				C34CCB5F1771735E0052ECC5 /* DMGithubAPIClient.m in Sources */,
+				16DC83321770012100523125 /* DMAppDelegate.m in Sources */,
+				16B9A0881770B56500A15617 /* User.m in Sources */,
+				16B9A0851770B56400A15617 /* Commit.m in Sources */,
+				16B9A0501770229800A15617 /* DMTableViewController.m in Sources */,
+				16B9A04A1770228C00A15617 /* DMGitHubClient.m in Sources */,
+				16DC833B1770012100523125 /* aBGHC.xcdatamodeld in Sources */,
+				16B9A08B1770B56500A15617 /* Repository.m in Sources */,
+				16B9A04F1770229800A15617 /* DMCollectionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16DC833C1770012100523125 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16DC83511770012100523125 /* aBGHCTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16DC83481770012100523125 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16DC831B1770012100523125 /* aBGHC */;
+			targetProxy = 16DC83471770012100523125 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		16DC832A1770012100523125 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16DC832B1770012100523125 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		16DC834C1770012100523125 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16DC834D1770012100523125 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16DC83521770012100523125 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		16DC83531770012100523125 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		16DC83551770012100523125 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81A6606AC6284644A38E6231 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "aBGHC/aBGHC-Prefix.pch";
+				INFOPLIST_FILE = "aBGHC/aBGHC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		16DC83561770012100523125 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81A6606AC6284644A38E6231 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "aBGHC/aBGHC-Prefix.pch";
+				INFOPLIST_FILE = "aBGHC/aBGHC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		16DC83581770012100523125 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/aBGHC.app/aBGHC";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "aBGHC/aBGHC-Prefix.pch";
+				INFOPLIST_FILE = "aBGHCTests/aBGHCTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		16DC83591770012100523125 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/aBGHC.app/aBGHC";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "aBGHC/aBGHC-Prefix.pch";
+				INFOPLIST_FILE = "aBGHCTests/aBGHCTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16DC83171770012100523125 /* Build configuration list for PBXProject "aBGHC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16DC83521770012100523125 /* Debug */,
+				16DC83531770012100523125 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16DC83541770012100523125 /* Build configuration list for PBXNativeTarget "aBGHC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16DC83551770012100523125 /* Debug */,
+				16DC83561770012100523125 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16DC83571770012100523125 /* Build configuration list for PBXNativeTarget "aBGHCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16DC83581770012100523125 /* Debug */,
+				16DC83591770012100523125 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		16DC83391770012100523125 /* aBGHC.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				16DC833A1770012100523125 /* aBGHC.xcdatamodel */,
+			);
+			currentVersion = 16DC833A1770012100523125 /* aBGHC.xcdatamodel */;
+			path = aBGHC.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 16DC83141770012100523125 /* Project object */;
+}
