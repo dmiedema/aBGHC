@@ -7,6 +7,7 @@
 //
 
 #import "DMAppDelegate.h"
+#import "DMGithubClient.h"
 
 #if TESTING
 //#import <SparkInspector/SparkInspector.h>
