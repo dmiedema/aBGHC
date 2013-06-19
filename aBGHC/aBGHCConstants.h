@@ -16,7 +16,8 @@
 
 #define aBGHC_GitHubApiUrl              @"https://api.github.com"
 
-#define aGHB_DefaultHTTPType    @"application/json"
+#define aBGHC_DefaultHTTPType    @"application/json"
+#define aBGHC_DefaultHTTPMethod  @"GET"
 
 #define aBGHC_UUID              @"aBGHC_UUID"
 
