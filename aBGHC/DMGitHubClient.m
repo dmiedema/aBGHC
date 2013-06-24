@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Daniel Miedema. All rights reserved.
 
 #import "DMGitHubClient.h"
+#import <DerpKit/DerpKit.h>
 
 @interface DMGitHubClient()
 
@@ -19,13 +20,21 @@
 
 typedef void (^JSONResponseDictionaryBlock)(NSDictionary *json);
 
+#pragma mark Search Scope Options
 NSString *searchScopeMine = @"Mine";
 NSString *searchScopeStarred = @"Starred";
 NSString *searchScopeWatched = @"Watched";
 
+#pragma mark Home Screen Options
 NSString *homeScreenNotifications = @"Notifications";
 NSString *homeScreenRepositories = @"Repositories";
 NSString *homeScreenGists = @"Gists";
+
+#pragma mark Settings Screen Options
+NSString *settingsScreenAbout = @"About";
+NSString *settingsScreenAcknowledgements = @"Acknowledgements";
+NSString *settingsScreenTwitter = @"Follow Developer on Twitter";
+NSString *settingsScreenContactSupport = @"Contact Support";
 
 typedef enum {
   UserNotifications = 0,
@@ -42,13 +51,10 @@ typedef enum {
 
 + (DMGitHubClient *)sharedInstance {
     static DMGitHubClient *client = nil;
-    //        client = [[DMGitHubClient alloc] initWithBaseURL:[NSURL URLWithString:aBGHC_GitHubApiUrl]];
-
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
       client = [[DMGitHubClient alloc] init];
     });
-    
     return client;
 }
 
@@ -63,11 +69,20 @@ typedef enum {
 
 + (NSArray *)searchScopeOptions {
     static NSArray *searchScope = nil;
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
       searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched];
     });
     return searchScope;
+}
+
++ (NSArray *)settingsScreenOptions {
+    static NSArray *settingsOptions = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        settingsOptions = @[settingsScreenAbout, settingsScreenAcknowledgements, settingsScreenContactSupport, settingsScreenTwitter];
+    });
+    return settingsOptions;
 }
 
 #pragma mark init
@@ -204,19 +219,34 @@ typedef enum {
   }];
   [operation start];
 }
+- (void)createNewFileWithInformation:(NSDictionary *)information withSuccess:(JSONResponseBlock)sucess andError:(ErrorResponseBlock)error {
+  ////
+  //  PUT /repos/:owner/:repo/contents/:path
+  ////
+  //  Parameters
+  //  
+  //  path
+  //  Required string - The content path.
+  //  message
+  //  Required string - The commit message.
+  //  content
+  //  Required string - The new file content, Base64 encoded.
+  //  branch
+  //  Optional string - The branch name. If not provided, uses the repository’s default branch (usually master).
+  NSString *content = [information objectForKey:@"content"];
+  
+  NSMutableDictionary *params = [NSMutableDictionary new];
+  [params setValue:[information objectForKey:@"path"] forKey:@"path"];
+  [params setValue:[information objectForKey:@"message"] forKey:@"message"];
+  [params setValue:[content derp_stringByBase64EncodingString] forKey:@"content"];
+  if ([information objectForKey:@"branch"])
+    [params setValue:[information objectForKey:@"branch"] forKey:@"branch"];
+  
+//  NSMutableURLRequest *request = [NSMutableURLRequest new];
+}
 
-- (void)createCommitWithInformation:(NSDictionary *)commitInformation {
-    /*
-    1. Get all commits
-    2. Create new blob
-    3. Create new tree
-    4. Create new commit
-    5. Update ref
-    */
+- (void)createCommitWithInformation:(NSDictionary *)commitInformation withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)error {
     
-    NSLog(@"Commit Information : %@", commitInformation);    
-    
-    // Format commitInformation Dictionary continually to make this work
 }
 
 #pragma mark Private Helper Methods

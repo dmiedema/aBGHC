@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16B9A04A1770228C00A15617 /* DMGitHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A0491770228C00A15617 /* DMGitHubClient.m */; };
-		16B9A04F1770229800A15617 /* DMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A04C1770229800A15617 /* DMCollectionViewController.m */; };
-		16B9A0501770229800A15617 /* DMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A04E1770229800A15617 /* DMTableViewController.m */; };
+		16B9A04F1770229800A15617 /* DMHomeScreenCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A04C1770229800A15617 /* DMHomeScreenCollectionViewController.m */; };
+		16B9A0501770229800A15617 /* DMSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9A04E1770229800A15617 /* DMSettingsTableViewController.m */; };
 		16B9A0521770229D00A15617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B9A0511770229D00A15617 /* Main.storyboard */; };
 		16B9A05C1770240500A15617 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0541770240500A15617 /* Accelerate.framework */; };
 		16B9A05D1770240500A15617 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B9A0551770240500A15617 /* Accounts.framework */; };
@@ -40,7 +40,14 @@
 		16DC834E1770012100523125 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16DC834C1770012100523125 /* InfoPlist.strings */; };
 		16DC83511770012100523125 /* aBGHCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DC83501770012100523125 /* aBGHCTests.m */; };
 		6DB02224FC004A6985430C97 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 983C5FD66C2B4F45A5BAFA58 /* libPods.a */; };
+		C340AB8B17779E5700F07448 /* DMHomeScreenCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB8A17779E5700F07448 /* DMHomeScreenCellTopView.m */; };
+		C340AB8E17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB8D17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m */; };
+		C340AB9117779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB9017779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m */; };
+		C340AB95177826F600F07448 /* DMHomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB94177826F600F07448 /* DMHomeScreenViewController.m */; };
 		C34CCB5F1771735E0052ECC5 /* DMGithubAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C34CCB5E1771735E0052ECC5 /* DMGithubAPIClient.m */; };
+		C3CFDEDA1774254400B57FEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDED91774254400B57FEF /* SystemConfiguration.framework */; };
+		C3CFDEDC1774255100B57FEF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */; };
+		C3CFDEE11777762500B57FEF /* DMHomeScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CFDEE01777762500B57FEF /* DMHomeScreenCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +63,10 @@
 /* Begin PBXFileReference section */
 		16B9A0481770228C00A15617 /* DMGitHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMGitHubClient.h; sourceTree = "<group>"; };
 		16B9A0491770228C00A15617 /* DMGitHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMGitHubClient.m; sourceTree = "<group>"; };
-		16B9A04B1770229800A15617 /* DMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCollectionViewController.h; sourceTree = "<group>"; };
-		16B9A04C1770229800A15617 /* DMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCollectionViewController.m; sourceTree = "<group>"; };
-		16B9A04D1770229800A15617 /* DMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTableViewController.h; sourceTree = "<group>"; };
-		16B9A04E1770229800A15617 /* DMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTableViewController.m; sourceTree = "<group>"; };
+		16B9A04B1770229800A15617 /* DMHomeScreenCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenCollectionViewController.h; sourceTree = "<group>"; };
+		16B9A04C1770229800A15617 /* DMHomeScreenCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenCollectionViewController.m; sourceTree = "<group>"; };
+		16B9A04D1770229800A15617 /* DMSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSettingsTableViewController.h; sourceTree = "<group>"; };
+		16B9A04E1770229800A15617 /* DMSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSettingsTableViewController.m; sourceTree = "<group>"; };
 		16B9A0511770229D00A15617 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		16B9A053177022AF00A15617 /* aBGHCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aBGHCConstants.h; sourceTree = "<group>"; };
 		16B9A0541770240500A15617 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -99,8 +106,20 @@
 		16DC83501770012100523125 /* aBGHCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aBGHCTests.m; sourceTree = "<group>"; };
 		81A6606AC6284644A38E6231 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		983C5FD66C2B4F45A5BAFA58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C340AB8917779E5700F07448 /* DMHomeScreenCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenCellTopView.h; sourceTree = "<group>"; };
+		C340AB8A17779E5700F07448 /* DMHomeScreenCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenCellTopView.m; sourceTree = "<group>"; };
+		C340AB8C17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenNotificationsCellBottomView.h; sourceTree = "<group>"; };
+		C340AB8D17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenNotificationsCellBottomView.m; sourceTree = "<group>"; };
+		C340AB8F17779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenRepositoriesCellBottomView.h; sourceTree = "<group>"; };
+		C340AB9017779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenRepositoriesCellBottomView.m; sourceTree = "<group>"; };
+		C340AB93177826F600F07448 /* DMHomeScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenViewController.h; sourceTree = "<group>"; };
+		C340AB94177826F600F07448 /* DMHomeScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenViewController.m; sourceTree = "<group>"; };
 		C34CCB5D1771735E0052ECC5 /* DMGithubAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMGithubAPIClient.h; sourceTree = "<group>"; };
 		C34CCB5E1771735E0052ECC5 /* DMGithubAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMGithubAPIClient.m; sourceTree = "<group>"; };
+		C3CFDED91774254400B57FEF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C3CFDEDF1777762500B57FEF /* DMHomeScreenCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenCollectionViewCell.h; sourceTree = "<group>"; };
+		C3CFDEE01777762500B57FEF /* DMHomeScreenCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +127,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3CFDEDC1774255100B57FEF /* MobileCoreServices.framework in Frameworks */,
+				C3CFDEDA1774254400B57FEF /* SystemConfiguration.framework in Frameworks */,
 				16B9A05C1770240500A15617 /* Accelerate.framework in Frameworks */,
 				16B9A05D1770240500A15617 /* Accounts.framework in Frameworks */,
 				16B9A05E1770240500A15617 /* MessageUI.framework in Frameworks */,
@@ -152,10 +173,10 @@
 		16B9A0651770325700A15617 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				16B9A04B1770229800A15617 /* DMCollectionViewController.h */,
-				16B9A04C1770229800A15617 /* DMCollectionViewController.m */,
-				16B9A04D1770229800A15617 /* DMTableViewController.h */,
-				16B9A04E1770229800A15617 /* DMTableViewController.m */,
+				16B9A04B1770229800A15617 /* DMHomeScreenCollectionViewController.h */,
+				16B9A04C1770229800A15617 /* DMHomeScreenCollectionViewController.m */,
+				16B9A04D1770229800A15617 /* DMSettingsTableViewController.h */,
+				16B9A04E1770229800A15617 /* DMSettingsTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -163,6 +184,7 @@
 		16B9A0661770325E00A15617 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C340AB921777A51000F07448 /* HomeScreen */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -204,6 +226,8 @@
 		16DC831E1770012100523125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */,
+				C3CFDED91774254400B57FEF /* SystemConfiguration.framework */,
 				16B9A0541770240500A15617 /* Accelerate.framework */,
 				16B9A0551770240500A15617 /* Accounts.framework */,
 				16B9A0561770240500A15617 /* MessageUI.framework */,
@@ -269,6 +293,23 @@
 				16DC834C1770012100523125 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C340AB921777A51000F07448 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C3CFDEDF1777762500B57FEF /* DMHomeScreenCollectionViewCell.h */,
+				C3CFDEE01777762500B57FEF /* DMHomeScreenCollectionViewCell.m */,
+				C340AB8917779E5700F07448 /* DMHomeScreenCellTopView.h */,
+				C340AB8A17779E5700F07448 /* DMHomeScreenCellTopView.m */,
+				C340AB8C17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.h */,
+				C340AB8D17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m */,
+				C340AB8F17779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.h */,
+				C340AB9017779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m */,
+				C340AB93177826F600F07448 /* DMHomeScreenViewController.h */,
+				C340AB94177826F600F07448 /* DMHomeScreenViewController.m */,
+			);
+			name = HomeScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,11 +458,16 @@
 				16DC83321770012100523125 /* DMAppDelegate.m in Sources */,
 				16B9A0881770B56500A15617 /* User.m in Sources */,
 				16B9A0851770B56400A15617 /* Commit.m in Sources */,
-				16B9A0501770229800A15617 /* DMTableViewController.m in Sources */,
+				16B9A0501770229800A15617 /* DMSettingsTableViewController.m in Sources */,
 				16B9A04A1770228C00A15617 /* DMGitHubClient.m in Sources */,
+				C3CFDEE11777762500B57FEF /* DMHomeScreenCollectionViewCell.m in Sources */,
+				C340AB95177826F600F07448 /* DMHomeScreenViewController.m in Sources */,
+				C340AB8E17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m in Sources */,
+				C340AB8B17779E5700F07448 /* DMHomeScreenCellTopView.m in Sources */,
 				16DC833B1770012100523125 /* aBGHC.xcdatamodeld in Sources */,
 				16B9A08B1770B56500A15617 /* Repository.m in Sources */,
-				16B9A04F1770229800A15617 /* DMCollectionViewController.m in Sources */,
+				16B9A04F1770229800A15617 /* DMHomeScreenCollectionViewController.m in Sources */,
+				C340AB9117779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

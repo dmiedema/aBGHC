@@ -34,6 +34,7 @@ typedef enum {
 + (DMGitHubClient *)sharedInstance;
 + (NSArray *)homeScreenOptions;
 + (NSArray *)searchScopeOptions;
++ (NSArray *)settingsScreenOptions;
 
 // Load repository content
 - (void)loadRepositoryInformation:(repositoryContentType)infoType forRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)error;
