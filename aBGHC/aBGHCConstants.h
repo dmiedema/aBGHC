@@ -21,6 +21,8 @@ static NSString *const aBGHC_DefaultHTTPType            = @"application/json";
 static NSString *const aBGHC_DefaultHTTPMethod          = @"GET";
 
 #pragma mark - NSUserDefaults
+static NSString *const aBGHC_CurrentUser                = @"aBGHC_CurrentUser";
+static NSString *const aBGHC_AllAccounts                = @"aBGHC_AllUsersAccounts";
 static NSString *const aBGHC_UUID                       = @"aBGHC_UUID";
 static NSString *const aBGHC_AccessToken                = @"access_token";
 static NSString *const aBGHC_TokenType                  = @"token_type";

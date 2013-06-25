@@ -88,22 +88,55 @@ typedef enum {
 #pragma mark init
 - (id)init {
     self = [super init];
-    
+
     if (self) {
-      _username    = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_Username];
-      _accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AccessToken];
-      _tokenType   = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_TokenType];
-      if (_accessToken && _tokenType)
-          _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
+        NSDictionary *currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_CurrentUser];
+        _username    = [currentUser objectForKey:aBGHC_Username];
+        _accessToken = [currentUser objectForKey:aBGHC_AccessToken];
+        _tokenType   = [currentUser objectForKey:aBGHC_TokenType];
+        if (_accessToken && _tokenType)
+            _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
                           aBGHC_AccessToken, _accessToken,
                           aBGHC_TokenType, _tokenType];
-      else _httpHeaderTokenString = @"";
+        else _httpHeaderTokenString = @"";
     }
-    
     return self;
 }
 
+
 #pragma mark Implemenatation
+- (void)loadCredentialsForAccountWithUsername:(NSString *)username {
+    if ([_username isEqualToString:username]) return;
+    NSArray *accounts = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AllAccounts];
+    NSDictionary *newUser = nil;
+    for (NSDictionary *account in accounts) {
+        if ([[[account allKeys] objectAtIndex:0] isEqualToString:username]) {
+            newUser = [account objectForKey:[[account allKeys] objectAtIndex:0]];
+            _username    = [newUser objectForKey:aBGHC_Username];
+            _accessToken = [newUser objectForKey:aBGHC_AccessToken];
+            _tokenType   = [newUser objectForKey:aBGHC_TokenType];
+            if (_accessToken && _tokenType)
+                _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
+                                          aBGHC_AccessToken, _accessToken,
+                                          aBGHC_TokenType, _tokenType];
+            else _httpHeaderTokenString = @"";
+            [[NSUserDefaults standardUserDefaults] setObject:_username forKey:aBGHC_CurrentUser];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    } // End foreach check.
+}
+
+- (void)createNewAccountWithUsername:(NSString *)username accessToken:(NSString *)accessToken andTokenType:(NSString *)tokenType {
+    NSMutableArray *accounts = [[[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AllAccounts] mutableCopy];
+    
+    NSDictionary *newAccountDetails = @{aBGHC_Username : username, aBGHC_AccessToken : accessToken, aBGHC_TokenType : tokenType};
+    NSDictionary *newAccount = @{username : newAccountDetails};
+    
+    [accounts addObject:newAccount];
+    [[NSUserDefaults standardUserDefaults] setObject:accounts forKey:aBGHC_AllAccounts];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)loadRepositoryInformation:(repositoryContentType)infoType forRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {
   NSString *urlString;
   switch (infoType) {

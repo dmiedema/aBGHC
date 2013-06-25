@@ -36,6 +36,10 @@ typedef enum {
 + (NSArray *)searchScopeOptions;
 + (NSArray *)settingsScreenOptions;
 
+// Change accounts
+- (void)loadCredentialsForAccountWithUsername:(NSString *)username;
+// Create new Account
+- (void)createNewAccountWithUsername:(NSString *)username accessToken:(NSString *)accessToken andTokenType:(NSString *)tokenType;
 // Load repository content
 - (void)loadRepositoryInformation:(repositoryContentType)infoType forRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)error;
 // Load repository details
