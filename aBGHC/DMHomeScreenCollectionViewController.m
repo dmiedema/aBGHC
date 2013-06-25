@@ -39,9 +39,12 @@
     // Set up cell height in CollectionView
     
     
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showSettings:)];
     
-    UIBarButtonItem *addAccountButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAccount:)];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStyleBordered target:self action:@selector(showSettings:)];
+
+    UIBarButtonItem *addAccountButton = [[UIBarButtonItem alloc] initWithTitle:@"Accounts" style:UIBarButtonItemStyleBordered target:self action:@selector(addAccount:)];
+
+//    UIBarButtonItem *addAccountButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAccount:)];
     
     self.navigationItem.leftBarButtonItem = settingsButton;
     self.navigationItem.rightBarButtonItem = addAccountButton;
@@ -77,7 +80,8 @@
     label.frame = CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height-1);
     label.backgroundColor = [UIColor whiteColor];
     
-    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleHeadline1];
+//    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleHeadline1];
+    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleAttribute];
     label.font = [UIFont fontWithDescriptor:descriptor size:0.0];
     
     DMHomeScreenCellTopView *topView = [[DMHomeScreenCellTopView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height - 1)];

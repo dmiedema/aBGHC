@@ -28,7 +28,8 @@
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.backgroundColor = [UIColor whiteColor];
         
-        UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleHeadline1];
+//        UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleHeadline1];
+        UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleAttribute];
         _contentLabel.font = [UIFont fontWithDescriptor:descriptor size:0.0];
         
     }
