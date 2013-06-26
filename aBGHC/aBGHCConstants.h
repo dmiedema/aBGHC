@@ -14,6 +14,9 @@
 static NSString *const aBGHC_GitHubClientID             = @"8881762e516271c9af67";
 static NSString *const aBGHC_GitHubClientSecret         = @"a850b277689c5cc93e3dbbcbe12e96011f972ecf";
 static NSString *const aBGHC_GitHubScope                = @"user,notifications,repo,gist,delete_repo";
+static NSString *const aBGHC_GitHubURL                  = @"https://github.com/";
+static NSString *const aBGHC_GitHubAuthenticationURL    = @"https://github.com/login/oauth/authorize";
+static NSString *const aBGHC_GitHubOAuthTokenURL        = @"https://github.com/login/oauth/access_token";
 
 #pragma mark - Model
 static NSString *const aBGHC_GitHubApiUrl               = @"https://api.github.com";
@@ -32,7 +35,6 @@ static NSString *const aBGHC_Username                   = @"username";
 #pragma mark - NSNotificationCenter Notifications
 static NSString *const aBGHC_CommitCancelledNotification      = @"aBGHC-Commit-Cancelled-Notification";
 static NSString *const aBGHC_CommitMessagePostedNotification  = @"aBGHC-Commit-Posted-Notification";
-
 static NSString *const aBGHC_Model_NotificationsRecieved      = @"aBGHC-Model-NotifcationsForUserRecieved";
 
 //static NSString *const aBGHC_TintColor [UIColor greenColor];
