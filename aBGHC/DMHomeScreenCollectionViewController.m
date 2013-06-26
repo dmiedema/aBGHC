@@ -9,6 +9,7 @@
 #import "DMHomeScreenCollectionViewController.h"
 #import "DMSettingsTableViewController.h"
 #import "DMHomeScreenCellTopView.h"
+#import "DMAccountsViewController.h"
 
 @interface DMHomeScreenCollectionViewController ()
 
@@ -65,6 +66,8 @@
 }
 - (void)addAccount:(id)sender {
     NSLog(@"Add Account here");
+    DMAccountsViewController *accountsView = [self.storyboard instantiateViewControllerWithIdentifier:@"DMAccountsViewController"];
+    [self.navigationController pushViewController:accountsView animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
