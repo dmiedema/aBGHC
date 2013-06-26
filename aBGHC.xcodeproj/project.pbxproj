@@ -48,6 +48,7 @@
 		C36CDAE8177AA73E004AF0A4 /* DMNotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36CDAE7177AA73E004AF0A4 /* DMNotificationsTableViewController.m */; };
 		C36CDAEB177AA757004AF0A4 /* DMAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36CDAEA177AA757004AF0A4 /* DMAccountsViewController.m */; };
 		C36CDAF4177AABF2004AF0A4 /* DMNewAccountWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36CDAF3177AABF2004AF0A4 /* DMNewAccountWebViewController.m */; };
+		C36CDAF8177AC4B8004AF0A4 /* DMRepositoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36CDAF7177AC4B8004AF0A4 /* DMRepositoriesTableViewController.m */; };
 		C3CFDEDA1774254400B57FEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDED91774254400B57FEF /* SystemConfiguration.framework */; };
 		C3CFDEDC1774255100B57FEF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */; };
 		C3CFDEE11777762500B57FEF /* DMHomeScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CFDEE01777762500B57FEF /* DMHomeScreenCollectionViewCell.m */; };
@@ -125,6 +126,8 @@
 		C36CDAEA177AA757004AF0A4 /* DMAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAccountsViewController.m; sourceTree = "<group>"; };
 		C36CDAF2177AABF2004AF0A4 /* DMNewAccountWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewAccountWebViewController.h; sourceTree = "<group>"; };
 		C36CDAF3177AABF2004AF0A4 /* DMNewAccountWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewAccountWebViewController.m; sourceTree = "<group>"; };
+		C36CDAF6177AC4B8004AF0A4 /* DMRepositoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRepositoriesTableViewController.h; sourceTree = "<group>"; };
+		C36CDAF7177AC4B8004AF0A4 /* DMRepositoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRepositoriesTableViewController.m; sourceTree = "<group>"; };
 		C3CFDED91774254400B57FEF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C3CFDEDF1777762500B57FEF /* DMHomeScreenCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenCollectionViewCell.h; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 		16B9A0651770325700A15617 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C36CDAF5177AC4A4004AF0A4 /* Repositories */,
 				C36CDAEC177AA762004AF0A4 /* HomeScreen */,
 				C36CDAED177AA768004AF0A4 /* Settings */,
 				C36CDAEE177AA770004AF0A4 /* Notifications */,
@@ -359,6 +363,15 @@
 			name = Accounts;
 			sourceTree = "<group>";
 		};
+		C36CDAF5177AC4A4004AF0A4 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C36CDAF6177AC4B8004AF0A4 /* DMRepositoriesTableViewController.h */,
+				C36CDAF7177AC4B8004AF0A4 /* DMRepositoriesTableViewController.m */,
+			);
+			name = Repositories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -503,6 +516,7 @@
 				16DC832E1770012100523125 /* main.m in Sources */,
 				C36CDAEB177AA757004AF0A4 /* DMAccountsViewController.m in Sources */,
 				C36CDAE8177AA73E004AF0A4 /* DMNotificationsTableViewController.m in Sources */,
+				C36CDAF8177AC4B8004AF0A4 /* DMRepositoriesTableViewController.m in Sources */,
 				C34CCB5F1771735E0052ECC5 /* DMGithubAPIClient.m in Sources */,
 				16DC83321770012100523125 /* DMAppDelegate.m in Sources */,
 				16B9A0881770B56500A15617 /* User.m in Sources */,

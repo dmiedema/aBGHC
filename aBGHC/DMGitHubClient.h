@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 
-typedef void (^JSONResponseBlock)(id json);
+typedef void (^JSONResponseBlock)(id JSON);
 typedef void (^ErrorResponseBlock)(NSDictionary *error);
 
 @interface DMGitHubClient : NSObject
@@ -48,6 +48,8 @@ typedef enum {
 - (void)loadFileWithInformation:(NSDictionary *)dictionary withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure;
 // Get notifications
 - (void)getNotificationsForUserWithSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure;
+// Mark all notifications as read
+- (void)markAllNotificationsAsReadWithSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure;
 // Search
 - (void)searchWithType:(searchType)type andCriteria:(NSDictionary *)criteria withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)error;
 // Create a file

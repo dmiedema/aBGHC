@@ -96,8 +96,6 @@ typedef enum {
         NSDictionary *currentUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_CurrentUser];
         // Load contents of dictionary for the username I got out of aBGHC_CurrentUser dictionary.
         NSDictionary *currentUser = [currentUserDefaults objectForKey:[[currentUserDefaults allKeys] objectAtIndex:0]];
-
-        NSLog(@"Current User : %@", currentUser);
         
         self.username    = [currentUser objectForKey:aBGHC_Username];
         self.accessToken = [currentUser objectForKey:aBGHC_AccessToken];
@@ -227,6 +225,26 @@ typedef enum {
         NSLog(@"Error : %@", error);
         NSLog(@"Error JSON: %@", JSON);
       failure(JSON);
+    }];
+    [operation start];
+}
+- (void)markAllNotificationsAsReadWithSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {
+    NSString *urlString = [NSString stringWithFormat:@"%@/notifications?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    
+    [request setHTTPMethod:@"PUT"];
+//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:0 forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:@{} options:kNilOptions error:nil]];
+        
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        success(JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Error recieving notificaions");
+        NSLog(@"TRACE : DMGitHubClient -- markAllNotificationsAsRead -- ");
+        NSLog(@"Error : %@", error);
+        NSLog(@"Error JSON: %@", JSON);
+        failure(JSON);
     }];
     [operation start];
 }
