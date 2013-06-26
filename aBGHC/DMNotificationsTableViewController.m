@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSArray *repositoryNames;
 @property (nonatomic, strong) NSArray *notificationDetails;
 
+- (void)getUsersNotifications;
+
 @end
 
 @implementation DMNotificationsTableViewController
@@ -37,8 +39,17 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [[DMGitHubClient sharedInstance] getNotificationsForUserWithSuccess:^(id json) {
-        [self loadNotificationsIntoTable:json];
+    
+    UIBarButtonItem *markAsReadButton = [[UIBarButtonItem alloc] initWithTitle:@"Mark As Read" style:UIBarButtonItemStylePlain target:self action:@selector(markNotificationsAsRead:)];
+    
+    self.navigationItem.rightBarButtonItem = markAsReadButton;
+    
+    [self getUsersNotifications];
+}
+
+- (void)getUsersNotifications {
+    [[DMGitHubClient sharedInstance] getNotificationsForUserWithSuccess:^(id JSON) {
+        [self loadNotificationsIntoTable:JSON];
     } andError:^(NSDictionary *error) {
         [self handleError:error];
     }];
@@ -73,12 +84,21 @@
     NSLog(@"__repositoryNames : %@", repositoryNames);
     NSLog(@"__notificationDetails : %@", repositoryNotifications);
     
-    [[self tableView] reloadData];
+    [self.tableView reloadData];
     
 }
 
 - (void)handleError:(NSDictionary *)error {
-    
+    NSLog(@"WHOA ERROR : %@", error);
+}
+
+- (void)markNotificationsAsRead:(id)sender {
+    [[DMGitHubClient sharedInstance] markAllNotificationsAsReadWithSuccess:^(id JSON) {
+        NSLog(@"returned : %@", JSON);
+        [self getUsersNotifications];
+    } andError:^(NSDictionary *error) {
+        [self handleError:error];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,44 +198,6 @@
     CGSize textSize = [[dictionary objectForKey:@"title"] sizeWithFont:[UIFont fontWithDescriptor:descriptor size:0.0] constrainedToSize:CGSizeMake(self.tableView.frame.size.width - PADDING * 4, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
     return textSize.height + (PADDING * 4);
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
