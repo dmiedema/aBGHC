@@ -94,6 +94,7 @@ typedef enum {
         self.accessToken = [NSString new];
         self.tokenType = [NSString new];
         NSDictionary *currentUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_CurrentUser];
+        // Load contents of dictionary for the username I got out of aBGHC_CurrentUser dictionary.
         NSDictionary *currentUser = [currentUserDefaults objectForKey:[[currentUserDefaults allKeys] objectAtIndex:0]];
 
         NSLog(@"Current User : %@", currentUser);
