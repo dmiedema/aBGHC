@@ -129,10 +129,13 @@ typedef enum {
 - (void)createNewAccountWithUsername:(NSString *)username accessToken:(NSString *)accessToken andTokenType:(NSString *)tokenType {
     NSMutableArray *accounts = [[[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AllAccounts] mutableCopy];
     
+    if (!accounts) accounts = [NSMutableArray new];
+    
     NSDictionary *newAccountDetails = @{aBGHC_Username : username, aBGHC_AccessToken : accessToken, aBGHC_TokenType : tokenType};
     NSDictionary *newAccount = @{username : newAccountDetails};
-    
+   
     [accounts addObject:newAccount];
+    
     [[NSUserDefaults standardUserDefaults] setObject:accounts forKey:aBGHC_AllAccounts];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

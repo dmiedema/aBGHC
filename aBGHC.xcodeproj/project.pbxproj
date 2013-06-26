@@ -45,6 +45,9 @@
 		C340AB9117779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB9017779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m */; };
 		C340AB95177826F600F07448 /* DMHomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB94177826F600F07448 /* DMHomeScreenViewController.m */; };
 		C34CCB5F1771735E0052ECC5 /* DMGithubAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C34CCB5E1771735E0052ECC5 /* DMGithubAPIClient.m */; };
+		C36CDAE8177AA73E004AF0A4 /* DMNotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36CDAE7177AA73E004AF0A4 /* DMNotificationsTableViewController.m */; };
+		C36CDAEB177AA757004AF0A4 /* DMAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36CDAEA177AA757004AF0A4 /* DMAccountsViewController.m */; };
+		C36CDAF4177AABF2004AF0A4 /* DMNewAccountWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36CDAF3177AABF2004AF0A4 /* DMNewAccountWebViewController.m */; };
 		C3CFDEDA1774254400B57FEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDED91774254400B57FEF /* SystemConfiguration.framework */; };
 		C3CFDEDC1774255100B57FEF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */; };
 		C3CFDEE11777762500B57FEF /* DMHomeScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CFDEE01777762500B57FEF /* DMHomeScreenCollectionViewCell.m */; };
@@ -116,6 +119,12 @@
 		C340AB94177826F600F07448 /* DMHomeScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenViewController.m; sourceTree = "<group>"; };
 		C34CCB5D1771735E0052ECC5 /* DMGithubAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMGithubAPIClient.h; sourceTree = "<group>"; };
 		C34CCB5E1771735E0052ECC5 /* DMGithubAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMGithubAPIClient.m; sourceTree = "<group>"; };
+		C36CDAE6177AA73E004AF0A4 /* DMNotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNotificationsTableViewController.h; sourceTree = "<group>"; };
+		C36CDAE7177AA73E004AF0A4 /* DMNotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNotificationsTableViewController.m; sourceTree = "<group>"; };
+		C36CDAE9177AA757004AF0A4 /* DMAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAccountsViewController.h; sourceTree = "<group>"; };
+		C36CDAEA177AA757004AF0A4 /* DMAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAccountsViewController.m; sourceTree = "<group>"; };
+		C36CDAF2177AABF2004AF0A4 /* DMNewAccountWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewAccountWebViewController.h; sourceTree = "<group>"; };
+		C36CDAF3177AABF2004AF0A4 /* DMNewAccountWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewAccountWebViewController.m; sourceTree = "<group>"; };
 		C3CFDED91774254400B57FEF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C3CFDEDF1777762500B57FEF /* DMHomeScreenCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenCollectionViewCell.h; sourceTree = "<group>"; };
@@ -173,10 +182,10 @@
 		16B9A0651770325700A15617 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				16B9A04B1770229800A15617 /* DMHomeScreenCollectionViewController.h */,
-				16B9A04C1770229800A15617 /* DMHomeScreenCollectionViewController.m */,
-				16B9A04D1770229800A15617 /* DMSettingsTableViewController.h */,
-				16B9A04E1770229800A15617 /* DMSettingsTableViewController.m */,
+				C36CDAEC177AA762004AF0A4 /* HomeScreen */,
+				C36CDAED177AA768004AF0A4 /* Settings */,
+				C36CDAEE177AA770004AF0A4 /* Notifications */,
+				C36CDAEF177AA778004AF0A4 /* Accounts */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -310,6 +319,44 @@
 				C340AB94177826F600F07448 /* DMHomeScreenViewController.m */,
 			);
 			name = HomeScreen;
+			sourceTree = "<group>";
+		};
+		C36CDAEC177AA762004AF0A4 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				16B9A04B1770229800A15617 /* DMHomeScreenCollectionViewController.h */,
+				16B9A04C1770229800A15617 /* DMHomeScreenCollectionViewController.m */,
+			);
+			name = HomeScreen;
+			sourceTree = "<group>";
+		};
+		C36CDAED177AA768004AF0A4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				16B9A04D1770229800A15617 /* DMSettingsTableViewController.h */,
+				16B9A04E1770229800A15617 /* DMSettingsTableViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		C36CDAEE177AA770004AF0A4 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				C36CDAE6177AA73E004AF0A4 /* DMNotificationsTableViewController.h */,
+				C36CDAE7177AA73E004AF0A4 /* DMNotificationsTableViewController.m */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		C36CDAEF177AA778004AF0A4 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				C36CDAE9177AA757004AF0A4 /* DMAccountsViewController.h */,
+				C36CDAEA177AA757004AF0A4 /* DMAccountsViewController.m */,
+				C36CDAF2177AABF2004AF0A4 /* DMNewAccountWebViewController.h */,
+				C36CDAF3177AABF2004AF0A4 /* DMNewAccountWebViewController.m */,
+			);
+			name = Accounts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +501,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				16DC832E1770012100523125 /* main.m in Sources */,
+				C36CDAEB177AA757004AF0A4 /* DMAccountsViewController.m in Sources */,
+				C36CDAE8177AA73E004AF0A4 /* DMNotificationsTableViewController.m in Sources */,
 				C34CCB5F1771735E0052ECC5 /* DMGithubAPIClient.m in Sources */,
 				16DC83321770012100523125 /* DMAppDelegate.m in Sources */,
 				16B9A0881770B56500A15617 /* User.m in Sources */,
@@ -468,6 +517,7 @@
 				16B9A08B1770B56500A15617 /* Repository.m in Sources */,
 				16B9A04F1770229800A15617 /* DMHomeScreenCollectionViewController.m in Sources */,
 				C340AB9117779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m in Sources */,
+				C36CDAF4177AABF2004AF0A4 /* DMNewAccountWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
