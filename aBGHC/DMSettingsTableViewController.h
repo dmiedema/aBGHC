@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DMGitHubClient.h"
 
 @interface DMSettingsTableViewController : UITableViewController
 
