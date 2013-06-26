@@ -10,6 +10,7 @@
 #import "DMSettingsTableViewController.h"
 #import "DMHomeScreenCellTopView.h"
 #import "DMAccountsViewController.h"
+#import "DMNotificationsTableViewController.h"
 
 @interface DMHomeScreenCollectionViewController ()
 
@@ -118,7 +119,13 @@
 //}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *selectedItem = [_options objectAtIndex:indexPath.row];
     NSLog(@"Selected Item : %@", [_options objectAtIndex:indexPath.row]);
+    
+    if ([selectedItem isEqualToString:@"Notifications"]) {
+        DMNotificationsTableViewController *notificationsController = [self.storyboard instantiateViewControllerWithIdentifier:@"DMNotificationsController"];
+        [self.navigationController pushViewController:notificationsController animated:YES];
+    }
     
 }
 

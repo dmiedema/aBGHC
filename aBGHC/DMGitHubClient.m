@@ -90,37 +90,46 @@ typedef enum {
     self = [super init];
 
     if (self) {
-        NSDictionary *currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_CurrentUser];
-        _username    = [currentUser objectForKey:aBGHC_Username];
-        _accessToken = [currentUser objectForKey:aBGHC_AccessToken];
-        _tokenType   = [currentUser objectForKey:aBGHC_TokenType];
-        if (_accessToken && _tokenType)
-            _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
+        self.username = [NSString new];
+        self.accessToken = [NSString new];
+        self.tokenType = [NSString new];
+        NSDictionary *currentUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_CurrentUser];
+        NSDictionary *currentUser = [currentUserDefaults objectForKey:[[currentUserDefaults allKeys] objectAtIndex:0]];
+
+        NSLog(@"Current User : %@", currentUser);
+        
+        self.username    = [currentUser objectForKey:aBGHC_Username];
+        self.accessToken = [currentUser objectForKey:aBGHC_AccessToken];
+        self.tokenType   = [currentUser objectForKey:aBGHC_TokenType];
+        if (self.accessToken && self.tokenType)
+            self.httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
                           aBGHC_AccessToken, _accessToken,
                           aBGHC_TokenType, _tokenType];
-        else _httpHeaderTokenString = @"";
+        else self.httpHeaderTokenString = @"";
     }
+    NSLog(@"AccesToken : %@",self.accessToken);
+    NSLog(@"httpHeaderToken : %@", self.httpHeaderTokenString);
     return self;
 }
 
 
 #pragma mark Implemenatation
 - (void)loadCredentialsForAccountWithUsername:(NSString *)username {
-    if ([_username isEqualToString:username]) return;
+    if ([self.username isEqualToString:username]) return;
     NSArray *accounts = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AllAccounts];
     NSDictionary *newUser = nil;
     for (NSDictionary *account in accounts) {
         if ([[[account allKeys] objectAtIndex:0] isEqualToString:username]) {
-            newUser = [account objectForKey:[[account allKeys] objectAtIndex:0]];
-            _username    = [newUser objectForKey:aBGHC_Username];
-            _accessToken = [newUser objectForKey:aBGHC_AccessToken];
-            _tokenType   = [newUser objectForKey:aBGHC_TokenType];
-            if (_accessToken && _tokenType)
-                _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
+            newUser = [account objectForKey:[[account allKeys] objectAtIndex:0]];            
+            self.username    = [newUser objectForKey:aBGHC_Username];
+            self.accessToken = [newUser objectForKey:aBGHC_AccessToken];
+            self.tokenType   = [newUser objectForKey:aBGHC_TokenType];
+            if (self.accessToken && self.tokenType)
+                self.httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
                                           aBGHC_AccessToken, _accessToken,
                                           aBGHC_TokenType, _tokenType];
-            else _httpHeaderTokenString = @"";
-            [[NSUserDefaults standardUserDefaults] setObject:_username forKey:aBGHC_CurrentUser];
+            else self.httpHeaderTokenString = @"";
+            [[NSUserDefaults standardUserDefaults] setObject:username forKey:aBGHC_CurrentUser];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
     } // End foreach check.
@@ -136,6 +145,7 @@ typedef enum {
    
     [accounts addObject:newAccount];
     
+    [[NSUserDefaults standardUserDefaults] setObject:username forKey:aBGHC_CurrentUser];
     [[NSUserDefaults standardUserDefaults] setObject:accounts forKey:aBGHC_AllAccounts];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
