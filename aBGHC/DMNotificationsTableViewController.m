@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSArray *repositoryNames;
 @property (nonatomic, strong) NSArray *notificationDetails;
 
+@property BOOL noNotifications;
+
 - (void)getUsersNotifications;
 
 @end
@@ -33,12 +35,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    _noNotifications = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //// Refresh Control
+    [self.refreshControl addTarget:self action:@selector(getUsersNotifications) forControlEvents:UIControlEventValueChanged];
     
     UIBarButtonItem *markAsReadButton = [[UIBarButtonItem alloc] initWithTitle:@"Mark As Read" style:UIBarButtonItemStylePlain target:self action:@selector(markNotificationsAsRead:)];
     
@@ -48,6 +53,9 @@
 }
 
 - (void)getUsersNotifications {
+    if (self.refreshControl.refreshing) {
+        [self.refreshControl endRefreshing];
+    }
     [[DMGitHubClient sharedInstance] getNotificationsForUserWithSuccess:^(id JSON) {
         [self loadNotificationsIntoTable:JSON];
     } andError:^(NSDictionary *error) {
@@ -84,8 +92,9 @@
     NSLog(@"__repositoryNames : %@", repositoryNames);
     NSLog(@"__notificationDetails : %@", repositoryNotifications);
     
-    [self.tableView reloadData];
+    if (!_notificationDetails) _noNotifications = YES;
     
+    [self.tableView reloadData];
 }
 
 - (void)handleError:(NSDictionary *)error {
@@ -159,11 +168,14 @@
     [titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     CGSize constraintSize = CGSizeMake(DEFAULT_LABEL_WIDTH, MAXFLOAT);
     CGSize messageSize = [title sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
+    
+//    CGRect labelFrame = [title boundingRectWithSize:cell.bounds.size options:NSStringDrawingUsesLineFragmentOrigin attributes:nil context:nil];
     [titleLabel setText:title];
+//    titleLabel.frame = labelFrame;
     [titleLabel setFrame:CGRectMake(PADDING * 2, y, messageSize.width, messageSize.height)];
     
     y += messageSize.height;
-    
+//    y += labelFrame.size.height;
     // set up type label
     [typeLabel setAlpha:0.7];
     [typeLabel setTextColor:[UIColor darkGrayColor]];
