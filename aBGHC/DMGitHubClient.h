@@ -38,6 +38,8 @@ typedef enum {
 
 // Change accounts
 - (void)loadCredentialsForAccountWithUsername:(NSString *)username;
+// Get the currently active users name
+- (NSString *)currentUsername;
 // Create new Account
 - (void)createNewAccountWithUsername:(NSString *)username accessToken:(NSString *)accessToken andTokenType:(NSString *)tokenType;
 // Load repository content

@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) NSString *httpHeaderTokenString;
 
+- (void)performNetworkRequestWithURLRequest:(NSURLRequest *)request successCallback:(JSONResponseBlock)success andErrorCallback:(ErrorResponseBlock)failure;
+
 @end
 
 typedef void (^JSONResponseDictionaryBlock)(NSDictionary *json);
@@ -134,6 +136,10 @@ typedef enum {
     } // End foreach check.
 }
 
+- (NSString *)currentUsername {
+    return self.username;
+}
+
 - (void)createNewAccountWithUsername:(NSString *)username accessToken:(NSString *)accessToken andTokenType:(NSString *)tokenType {
     NSMutableArray *accounts = [[[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AllAccounts] mutableCopy];
     
@@ -167,16 +173,7 @@ typedef enum {
   NSString *url = [NSString stringWithFormat:@"%@/%@?%@", aBGHC_GitHubApiUrl, urlString, _httpHeaderTokenString];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
   
-  AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-      success(JSON);
-  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-    NSLog(@"Error loading Repo Info");
-    NSLog(@"TRACE : DMGitHubClient -- loadRepositoryInformation -- ");
-    NSLog(@"Error : %@", error);
-    NSLog(@"Error JSON: %@", JSON);
-    failure(JSON);
-  }];
-  [operation start];
+  [self performNetworkRequestWithURLRequest:request successCallback:success andErrorCallback:failure];
 }
 
 - (void)loadRepositoriesWithOptions:(repositoryTypesToLoad)repoType onSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {
@@ -217,36 +214,17 @@ typedef enum {
     NSString *urlString = [NSString stringWithFormat:@"%@/notifications?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-          success(JSON);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Error recieving notificaions");
-        NSLog(@"TRACE : DMGitHubClient -- getNotificationsForUser -- ");
-        NSLog(@"Error : %@", error);
-        NSLog(@"Error JSON: %@", JSON);
-      failure(JSON);
-    }];
-    [operation start];
+    [self performNetworkRequestWithURLRequest:request successCallback:success andErrorCallback:failure];
 }
 - (void)markAllNotificationsAsReadWithSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {
     NSString *urlString = [NSString stringWithFormat:@"%@/notifications?%@", aBGHC_GitHubApiUrl, _httpHeaderTokenString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     
     [request setHTTPMethod:@"PUT"];
-//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setValue:0 forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:@{} options:kNilOptions error:nil]];
-        
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        success(JSON);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Error recieving notificaions");
-        NSLog(@"TRACE : DMGitHubClient -- markAllNotificationsAsRead -- ");
-        NSLog(@"Error : %@", error);
-        NSLog(@"Error JSON: %@", JSON);
-        failure(JSON);
-    }];
-    [operation start];
+
+    [self performNetworkRequestWithURLRequest:request successCallback:success andErrorCallback:failure];
 }
 
 - (void)searchWithType:(searchType)type andCriteria:(NSDictionary *)criteria withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {
@@ -273,16 +251,7 @@ typedef enum {
   NSString *url = [NSString stringWithFormat:@"%@/%@%@", aBGHC_GitHubApiUrl, urlString, _httpHeaderTokenString];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
   
-  AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-    success(JSON);
-  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-    NSLog(@"Error Searching");
-    NSLog(@"TRACE : DMGitHubClient -- searchWithType -- ");
-    NSLog(@"Error : %@", error);
-    NSLog(@"Error JSON: %@", JSON);
-    failure(JSON);
-  }];
-  [operation start];
+  [self performNetworkRequestWithURLRequest:request successCallback:success andErrorCallback:failure];
 }
 - (void)createNewFileWithInformation:(NSDictionary *)information withSuccess:(JSONResponseBlock)sucess andError:(ErrorResponseBlock)error {
   ////
@@ -315,6 +284,15 @@ typedef enum {
 }
 
 #pragma mark Private Helper Methods
+
+-(void)performNetworkRequestWithURLRequest:(NSURLRequest *)request successCallback:(JSONResponseBlock)success andErrorCallback:(ErrorResponseBlock)failure {
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        success(JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        failure(JSON);
+    }];
+    [operation start];
+}
 
 - (NSArray *)convertDictionaryToArray:(NSDictionary *)json {
   return [NSArray arrayWithObjects:json, nil];
