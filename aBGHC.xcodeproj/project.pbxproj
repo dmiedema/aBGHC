@@ -40,6 +40,7 @@
 		16DC834E1770012100523125 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16DC834C1770012100523125 /* InfoPlist.strings */; };
 		16DC83511770012100523125 /* aBGHCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DC83501770012100523125 /* aBGHCTests.m */; };
 		6DB02224FC004A6985430C97 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 983C5FD66C2B4F45A5BAFA58 /* libPods.a */; };
+		C33261361780E79100D4D13B /* DMRepositoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C33261351780E79100D4D13B /* DMRepositoryTableViewCell.m */; };
 		C340AB8B17779E5700F07448 /* DMHomeScreenCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB8A17779E5700F07448 /* DMHomeScreenCellTopView.m */; };
 		C340AB8E17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB8D17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m */; };
 		C340AB9117779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C340AB9017779ED200F07448 /* DMHomeScreenRepositoriesCellBottomView.m */; };
@@ -110,6 +111,8 @@
 		16DC83501770012100523125 /* aBGHCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aBGHCTests.m; sourceTree = "<group>"; };
 		81A6606AC6284644A38E6231 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		983C5FD66C2B4F45A5BAFA58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33261341780E79100D4D13B /* DMRepositoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRepositoryTableViewCell.h; sourceTree = "<group>"; };
+		C33261351780E79100D4D13B /* DMRepositoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRepositoryTableViewCell.m; sourceTree = "<group>"; };
 		C340AB8917779E5700F07448 /* DMHomeScreenCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenCellTopView.h; sourceTree = "<group>"; };
 		C340AB8A17779E5700F07448 /* DMHomeScreenCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenCellTopView.m; sourceTree = "<group>"; };
 		C340AB8C17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenNotificationsCellBottomView.h; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 		16B9A0661770325E00A15617 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C33261331780E77100D4D13B /* RepositoryTableView */,
 				C340AB921777A51000F07448 /* HomeScreen */,
 			);
 			name = Views;
@@ -306,6 +310,15 @@
 				16DC834C1770012100523125 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C33261331780E77100D4D13B /* RepositoryTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C33261341780E79100D4D13B /* DMRepositoryTableViewCell.h */,
+				C33261351780E79100D4D13B /* DMRepositoryTableViewCell.m */,
+			);
+			name = RepositoryTableView;
 			sourceTree = "<group>";
 		};
 		C340AB921777A51000F07448 /* HomeScreen */ = {
@@ -523,6 +536,7 @@
 				16B9A0851770B56400A15617 /* Commit.m in Sources */,
 				16B9A0501770229800A15617 /* DMSettingsTableViewController.m in Sources */,
 				16B9A04A1770228C00A15617 /* DMGitHubClient.m in Sources */,
+				C33261361780E79100D4D13B /* DMRepositoryTableViewCell.m in Sources */,
 				C3CFDEE11777762500B57FEF /* DMHomeScreenCollectionViewCell.m in Sources */,
 				C340AB95177826F600F07448 /* DMHomeScreenViewController.m in Sources */,
 				C340AB8E17779E9700F07448 /* DMHomeScreenNotificationsCellBottomView.m in Sources */,
@@ -633,11 +647,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81A6606AC6284644A38E6231 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Miedema (PP5FQL9PFL)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "aBGHC/aBGHC-Prefix.pch";
 				INFOPLIST_FILE = "aBGHC/aBGHC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CCDF39A3-2594-47E3-8DB5-AE9DDA51CE45";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -646,11 +663,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81A6606AC6284644A38E6231 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Miedema (PP5FQL9PFL)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "aBGHC/aBGHC-Prefix.pch";
 				INFOPLIST_FILE = "aBGHC/aBGHC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CCDF39A3-2594-47E3-8DB5-AE9DDA51CE45";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
