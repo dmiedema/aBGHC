@@ -11,6 +11,8 @@
 #import "DMHomeScreenCellTopView.h"
 #import "DMAccountsViewController.h"
 #import "DMNotificationsTableViewController.h"
+#import "DMHomeScreenCollectionViewCell.h"
+#import "DMRepositoriesTableViewController.h"
 
 @interface DMHomeScreenCollectionViewController ()
 
@@ -35,12 +37,10 @@
 	// Do any additional setup after loading the view.
     _options = [NSArray new];
     _options = [DMGitHubClient homeScreenOptions];
-    NSLog(@"options : %@", _options);
+//    NSLog(@"options : %@", _options);
     // Set edge insets on Collection View
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 20, 0, 20);
     // Set up cell height in CollectionView
-    
-    
     
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStyleBordered target:self action:@selector(showSettings:)];
 
@@ -50,6 +50,10 @@
     
     self.navigationItem.leftBarButtonItem = settingsButton;
     self.navigationItem.rightBarButtonItem = addAccountButton;
+    
+//    self.navigationController.title = [[DMGitHubClient sharedInstance] currentUsername];
+    
+    NSLog(@"Current username: %@", self.navigationController.title);
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,7 +81,7 @@
     
     static NSString *reuseID = @"Cell";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
+    DMHomeScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     
     UILabel *label = [UILabel new];
     label.text = [_options objectAtIndex:indexPath.row];
@@ -87,13 +91,15 @@
 //    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleHeadline1];
     UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline1];
     label.font = [UIFont fontWithDescriptor:descriptor size:0.0];
-    
+//    DMHomeScreenCellTopView *topView = [DMHomeScreenCellTopView new];
     DMHomeScreenCellTopView *topView = [[DMHomeScreenCellTopView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height - 1)];
+//    topView.bounds = CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height -1);
     topView.labelContents = [_options objectAtIndex:indexPath.row];
-
-    NSLog(@"Top View : %@", topView);
+//
+//    NSLog(@"Top View : %@", topView);
     cell.backgroundColor = [UIColor grayColor];
     [cell addSubview:topView];
+//    cell.topView = topView;
     
     return cell;
 }
@@ -127,6 +133,10 @@
         [self.navigationController pushViewController:notificationsController animated:YES];
     }
     
+    if ([selectedItem isEqualToString:@"Repositories"]) {
+        DMRepositoriesTableViewController *repositoriesController = [self.storyboard instantiateViewControllerWithIdentifier:@"DMRepositoriesTableViewController"];
+        [self.navigationController pushViewController:repositoriesController animated:YES];
+    }
 }
 
 
