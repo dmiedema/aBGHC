@@ -18,7 +18,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        NSLog(@"Creating homescreen top view");
+//        NSLog(@"Creating homescreen top view");
         // Initialization code
         _labelContents = [NSString new];
         
@@ -32,16 +32,17 @@
         UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleAttribute];
         _contentLabel.font = [UIFont fontWithDescriptor:descriptor size:0.0];
         
+//        NSLog(@"SELF : %@", [self class]);
+        [self addSubview:_contentLabel];
     }
-    NSLog(@"SELF : %@", [self class]);
-    [self addSubview:_contentLabel];
     return self;
 }
 
 - (void)setLabelContents:(NSString *)labelContents {
-    NSLog(@"Label contents : %@", labelContents);
+//    NSLog(@"Label contents : %@", labelContents);
     _contentLabel.text = labelContents;
     _labelContents = labelContents;
+    [self setNeedsDisplay];
 }
 
 @end
