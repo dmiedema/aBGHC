@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DMRepositoriesTableViewController : UITableViewController
-
+@property (nonatomic, strong) NSArray *repos;
 @end
