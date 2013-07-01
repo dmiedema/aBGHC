@@ -7,7 +7,8 @@
 //
 
 #import "DMAppDelegate.h"
-#import "DMGithubClient.h"
+//#import "DMGithubClient.h"
+#import "DMHomeScreenCollectionViewController.h"
 
 #if TESTING
 //#import <SparkInspector/SparkInspector.h>
@@ -28,7 +29,10 @@
     
     // Get root view controller
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UIViewController *rootView = [mainStoryboard instantiateInitialViewController];
+    DMHomeScreenCollectionViewController *rootView = [mainStoryboard instantiateInitialViewController];
+    
+    rootView.title = [[DMGitHubClient sharedInstance] currentUsername];
+    NSLog(@"USerName : %@", [[DMGitHubClient sharedInstance] currentUsername]);
     
     // Set window to root view controller
     [self.window setRootViewController:rootView];
