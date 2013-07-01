@@ -36,7 +36,7 @@
                             <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Cell" reuseIdentifier="Cell" id="mGP-o4-vAn">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Cell" reuseIdentifier="Cell" id="mGP-o4-vAn" customClass="DMHomeScreenCollectionViewCell">
                                 <rect key="frame" x="15" y="5" width="290" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -272,11 +272,67 @@
             </objects>
             <point key="canvasLocation" x="51" y="1609"/>
         </scene>
+        <!--Repositories Table View Controller-->
+        <scene sceneID="YW0-Aj-7Kb">
+            <objects>
+                <tableViewController storyboardIdentifier="DMRepositoriesTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fso-zH-uWZ" customClass="DMRepositoriesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Ve-Pd-dYu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Github" showsScopeBar="YES" id="07r-jY-WDB">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>All</string>
+                                <string>Mine</string>
+                                <string>Starred</string>
+                                <string>Watching</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="Fso-zH-uWZ" id="Sng-mk-N66"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="jcm-BS-K0l">
+                                <rect key="frame" x="0.0" y="103" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Fso-zH-uWZ" id="a8j-zh-WzZ"/>
+                            <outlet property="delegate" destination="Fso-zH-uWZ" id="r9c-5O-T4n"/>
+                        </connections>
+                    </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="JUC-1u-otp" id="kPl-d2-Vx2"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ML3-ga-fiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="JUC-1u-otp">
+                    <connections>
+                        <outlet property="delegate" destination="Fso-zH-uWZ" id="810-nw-T1h"/>
+                        <outlet property="searchBar" destination="07r-jY-WDB" id="VSk-Gh-CyU"/>
+                        <outlet property="searchContentsController" destination="Fso-zH-uWZ" id="vfC-ad-h7J"/>
+                        <outlet property="searchResultsDataSource" destination="Fso-zH-uWZ" id="Lbp-dS-acr"/>
+                        <outlet property="searchResultsDelegate" destination="Fso-zH-uWZ" id="LL3-ab-Kbe"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="634" y="69"/>
+        </scene>
         <!--Collection View Controller-->
         <scene sceneID="cyu-gi-N2K">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="vLx-gw-n0S" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="MeJ-RU-Qwd">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="MeJ-RU-Qwd" customClass="DM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.034513986199999999" green="0.76979033799999996" blue="0.38740376980000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -308,7 +364,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HzB-P1-I4D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="69"/>
+            <point key="canvasLocation" x="1224" y="83"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.03451398619990919" green="0.76979033801020402" blue="0.38740376978051588" alpha="1" colorSpace="calibratedRGB"/>
