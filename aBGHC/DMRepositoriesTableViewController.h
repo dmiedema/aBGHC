@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DMRepositoriesTableViewController : UITableViewController
+@interface DMRepositoriesTableViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 @property (nonatomic, strong) NSArray *repos;
 @end

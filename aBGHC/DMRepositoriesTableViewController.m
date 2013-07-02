@@ -10,6 +10,8 @@
 #import "DMRepositoryTableViewCell.h"
 
 @interface DMRepositoriesTableViewController ()
+//@property (nonatomic) NSMutableArray *searchResults;
+//@property BOOL scrollViewIsAtTop;
 @end
 
 @implementation DMRepositoriesTableViewController
@@ -25,19 +27,32 @@
     return self;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
+
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+//        [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scopeChanged:) name: object:<#(id)#>
+    }
+    return self;
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [[DMGitHubClient sharedInstance] loadRepositoriesWithOptions:MINE onSuccess:^(id JSON) {
+        NSLog(@"JSON: %@", JSON);
         _repos = JSON;
         [self.tableView reloadData];
     } andError:^(NSDictionary *error) {
         NSLog(@"ERRR");
     }];
+//    _searchResults = [NSMutableArray new];
+    
+    self.searchDisplayController.searchBar.scopeButtonTitles = [DMGitHubClient searchScopeOptions];
+    
+//    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -62,6 +77,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+//    if (tableView == self.searchDisplayController.searchResultsTableView)
+//        return [_searchResults count];
+    
     return [_repos count];
 }
 
@@ -72,14 +90,157 @@
     
     // Configure the cell...
     
-    [cell addSubview:[DMRepositoryTableViewCell createTableViewCellWithBounds:cell.bounds andWithDictionary:[_repos objectAtIndex:indexPath.row]]];
+//    [cell addSubview:[DMRepositoryTableViewCell createTableViewCellWithBounds:cell.bounds andWithDictionary:[_repos objectAtIndex:indexPath.row]]];
     
+    NSDictionary *current;
+    
+//    if (tableView == self.searchDisplayController.searchResultsTableView) {
+//        current = [_searchResults objectAtIndex:indexPath.row];
+//    } else {
+        current = [_repos objectAtIndex:indexPath.row];
+//    }
+    
+    cell.textLabel.text = [current objectForKey:@"name"];
+    cell.detailTextLabel.text = [[current objectForKey:@"owner"] objectForKey:@"login"];
+    
+    cell.detailTextLabel.textColor = [UIColor darkGrayColor];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 64;
 }
+
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{    
+    // Return YES to cause the search result table view to be reloaded.
+    return NO;
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    NSLog(@"Search Scope Changed");
+    NSLog(@"%@", [[controller.searchBar.scopeButtonTitles objectAtIndex:searchOption] uppercaseString]);
+    
+    NSString *selectedItem = [controller.searchBar.scopeButtonTitles objectAtIndex:searchOption];
+    
+    NSDictionary *mappings = @{
+                               @"Mine" : [[NSNumber alloc] initWithInt:MINE],
+                               @"Starred" : [[NSNumber alloc] initWithInt:STARRED],
+                               @"Watching" : [[NSNumber alloc] initWithInt:WATCHED]
+                               };
+    
+    if (![selectedItem isEqualToString:@"All"]) {
+        [[DMGitHubClient sharedInstance] loadRepositoriesWithOptions:(int)[mappings objectForKey:selectedItem] onSuccess:^(id JSON) {
+            NSLog(@"Selected JSON: %@", JSON);
+            _repos = JSON;
+            [self.tableView reloadData];
+        } andError:^(NSDictionary *error) {
+            NSLog(@"Selected ERRR: %@", error);
+        }];
+    }
+        // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+
+
+/********************
+ 
+ #pragma mark - Content Filtering
+ 
+ - (void)updateFilteredContentForProductName:(NSString *)productName type:(NSString *)typeName
+ {
+ //  Update the filtered array based on the search text and scope.
+ 
+if ((productName == nil) || [productName length] == 0)
+{
+    // If there is no search string and the scope is "All".
+    if (typeName == nil)
+    {
+        self.searchResults = [self.products mutableCopy];
+    }
+    else
+    {
+        // If there is no search string and the scope is chosen.
+        NSMutableArray *searchResults = [[NSMutableArray alloc] init];
+        for (APLProduct *product in self.products)
+        {
+            if ([product.type isEqualToString:typeName])
+            {
+                [searchResults addObject:product];
+            }
+        }
+        self.searchResults = searchResults;
+    }
+    return;
+}
+
+
+[self.searchResults removeAllObjects]; // First clear the filtered array.
+
+ // Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
+ 
+for (APLProduct *product in self.products)
+{
+    if ((typeName == nil) || [product.type isEqualToString:typeName])
+    {
+        NSUInteger searchOptions = NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch;
+        NSRange productNameRange = NSMakeRange(0, product.name.length);
+        NSRange foundRange = [product.name rangeOfString:productName options:searchOptions range:productNameRange];
+        if (foundRange.length > 0)
+        {
+            [self.searchResults addObject:product];
+        }
+    }
+}
+}
+
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSString *scope;
+    
+    NSInteger selectedScopeButtonIndex = [self.searchDisplayController.searchBar selectedScopeButtonIndex];
+    if (selectedScopeButtonIndex > 0)
+    {
+        scope = [[APLProduct deviceTypeNames] objectAtIndex:(selectedScopeButtonIndex - 1)];
+    }
+    
+    [self updateFilteredContentForProductName:searchString type:scope];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    NSString *searchString = [self.searchDisplayController.searchBar text];
+    NSString *scope;
+    
+    if (searchOption > 0)
+    {
+        scope = [[APLProduct deviceTypeNames] objectAtIndex:(searchOption - 1)];
+    }
+    
+    [self updateFilteredContentForProductName:searchString type:scope];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+
+ ******************************/
+
 
 /*
 // Override to support conditional editing of the table view.
