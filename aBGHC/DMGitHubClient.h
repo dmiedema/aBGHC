@@ -38,6 +38,7 @@ typedef enum {
 
 // Change accounts
 - (void)loadCredentialsForAccountWithUsername:(NSString *)username;
+- (void)loadCredentialsForAccount:(NSDictionary *)account;
 // Get the currently active users name
 - (NSString *)currentUsername;
 // Create new Account

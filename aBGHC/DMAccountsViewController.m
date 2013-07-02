@@ -15,11 +15,14 @@
 
 @implementation DMAccountsViewController
 
+#pragma - mark View Life Cycle
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -31,10 +34,16 @@
     NSLog(@"Accounts : %@", [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AllAccounts]);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
+    // add notification observation
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newAccountInDefaults:) name:aBGHC_NewAccountCreatedNotification object:nil];
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,7 +52,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 
+//#pragma mark - 
+
+- (void)newAccountInDefaults:(id)sender {
+    NSLog(@"New Account Notificaiton Noticed");
+    [self.tableView reloadData];
+}
 
 - (void)addNewAccount:(id)sender {
     DMNewAccountWebViewController *newAccountController = [[DMNewAccountWebViewController alloc] init];
@@ -89,7 +103,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected L %@", [_accounts objectAtIndex:indexPath.row]);
     [[NSUserDefaults standardUserDefaults] setObject:[_accounts objectAtIndex:indexPath.row] forKey:aBGHC_CurrentUser];
+//    [[DMGitHubClient sharedInstance] loadCredentialsForAccountWithUsername:[_accounts objectAtIndex:indexPath.row]];
+    [[DMGitHubClient sharedInstance] loadCredentialsForAccount:[_accounts objectAtIndex:indexPath.row]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

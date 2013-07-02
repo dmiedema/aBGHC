@@ -25,7 +25,8 @@ typedef void (^JSONResponseDictionaryBlock)(NSDictionary *json);
 #pragma mark Search Scope Options
 NSString *searchScopeMine = @"Mine";
 NSString *searchScopeStarred = @"Starred";
-NSString *searchScopeWatched = @"Watched";
+NSString *searchScopeWatched = @"Watching";
+NSString *searchScopeAll = @"All";
 
 #pragma mark Home Screen Options
 NSString *homeScreenNotifications = @"Notifications";
@@ -73,7 +74,7 @@ typedef enum {
     static NSArray *searchScope = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-      searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched];
+      searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched, searchScopeAll];
     });
     return searchScope;
 }
@@ -95,9 +96,9 @@ typedef enum {
         self.username = [NSString new];
         self.accessToken = [NSString new];
         self.tokenType = [NSString new];
-        NSDictionary *currentUserDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_CurrentUser];
-        // Load contents of dictionary for the username I got out of aBGHC_CurrentUser dictionary.
-        NSDictionary *currentUser = [currentUserDefaults objectForKey:[[currentUserDefaults allKeys] objectAtIndex:0]];
+        NSDictionary *currentUserAccount = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_CurrentUser];
+        // Load contents of dictionary for the object I got out of aBGHC_CurrentUser dictionary.
+        NSDictionary *currentUser = [currentUserAccount objectForKey:[[currentUserAccount allKeys] objectAtIndex:0]];
         
         self.username    = [currentUser objectForKey:aBGHC_Username];
         self.accessToken = [currentUser objectForKey:aBGHC_AccessToken];
@@ -116,6 +117,10 @@ typedef enum {
 
 #pragma mark Implemenatation
 - (void)loadCredentialsForAccountWithUsername:(NSString *)username {
+    
+    NSLog(@"Changing credentials");
+    NSLog(@"Username: %@", username);
+    
     if ([self.username isEqualToString:username]) return;
     NSArray *accounts = [[NSUserDefaults standardUserDefaults] objectForKey:aBGHC_AllAccounts];
     NSDictionary *newUser = nil;
@@ -130,10 +135,28 @@ typedef enum {
                                           aBGHC_AccessToken, _accessToken,
                                           aBGHC_TokenType, _tokenType];
             else self.httpHeaderTokenString = @"";
-            [[NSUserDefaults standardUserDefaults] setObject:username forKey:aBGHC_CurrentUser];
+            [[NSUserDefaults standardUserDefaults] setObject:newUser forKey:aBGHC_CurrentUser];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
     } // End foreach check.
+    
+    NSLog(@"new values");
+    NSLog(@"username: %@", self.username);
+    NSLog(@"accesstoken: %@", self.accessToken);
+    NSLog(@"tokenType: %@", self.tokenType);
+    NSLog(@"httpHeader: %@", self.httpHeaderTokenString);
+}
+
+- (void)loadCredentialsForAccount:(NSDictionary *)accountDictionary {
+    NSDictionary *account = [accountDictionary objectForKey:[[accountDictionary allKeys] objectAtIndex:0]];
+    _username = [account objectForKey:aBGHC_Username];
+    _accessToken = [account objectForKey:aBGHC_AccessToken];
+    _tokenType = [account objectForKey:aBGHC_TokenType];
+    if (_accessToken && _tokenType) {
+        _httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
+                                      aBGHC_AccessToken, _accessToken,
+                                      aBGHC_TokenType, _tokenType];
+    }
 }
 
 - (NSString *)currentUsername {
@@ -150,9 +173,13 @@ typedef enum {
    
     [accounts addObject:newAccount];
     
-    [[NSUserDefaults standardUserDefaults] setObject:username forKey:aBGHC_CurrentUser];
+    [[NSUserDefaults standardUserDefaults] setObject:newAccount forKey:aBGHC_CurrentUser];
     [[NSUserDefaults standardUserDefaults] setObject:accounts forKey:aBGHC_AllAccounts];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self loadCredentialsForAccount:newAccount];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:aBGHC_NewAccountCreatedNotification object:newAccount];
 }
 
 - (void)loadRepositoryInformation:(repositoryContentType)infoType forRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {

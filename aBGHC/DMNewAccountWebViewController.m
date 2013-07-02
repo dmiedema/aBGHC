@@ -75,6 +75,7 @@
     [newRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     AFJSONRequestOperation *getUserName = [AFJSONRequestOperation JSONRequestOperationWithRequest:newRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         [[DMGitHubClient sharedInstance] createNewAccountWithUsername:[JSON objectForKey:@"login"] accessToken:[tokenInfo objectForKey:aBGHC_AccessToken] andTokenType:[tokenInfo objectForKey:aBGHC_TokenType]];
+        [self.navigationController popViewControllerAnimated:YES];
     }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Failure to create new account");
         NSLog(@"Response : %@", response);

@@ -36,5 +36,6 @@ static NSString *const aBGHC_Username                   = @"username";
 static NSString *const aBGHC_CommitCancelledNotification      = @"aBGHC-Commit-Cancelled-Notification";
 static NSString *const aBGHC_CommitMessagePostedNotification  = @"aBGHC-Commit-Posted-Notification";
 static NSString *const aBGHC_Model_NotificationsRecieved      = @"aBGHC-Model-NotifcationsForUserRecieved";
+static NSString *const aBGHC_NewAccountCreatedNotification    = @"aBGHC_NewAccountCreatedNotification";
 
 //static NSString *const aBGHC_TintColor [UIColor greenColor];
