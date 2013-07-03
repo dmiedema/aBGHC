@@ -12,7 +12,7 @@
 typedef void (^JSONResponseBlock)(id JSON);
 typedef void (^ErrorResponseBlock)(NSDictionary *error);
 
-@interface DMGitHubClient : NSObject
+@interface DMGitHubClient : AFHTTPClient
 
 typedef enum {
   MINE,
@@ -39,6 +39,8 @@ typedef enum {
 // Change accounts
 - (void)loadCredentialsForAccountWithUsername:(NSString *)username;
 - (void)loadCredentialsForAccount:(NSDictionary *)account;
+// Cancel Network Requests
+- (void)cancelNetworkRequests;
 // Get the currently active users name
 - (NSString *)currentUsername;
 // Create new Account

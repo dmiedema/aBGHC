@@ -16,6 +16,10 @@
 
 @property (nonatomic, strong) NSString *httpHeaderTokenString;
 
+@property BOOL requestsCancelled;
+
+//@property (nonatomic, strong) AFHTTPClient *httpClient;
+
 - (void)performNetworkRequestWithURLRequest:(NSURLRequest *)request successCallback:(JSONResponseBlock)success andErrorCallback:(ErrorResponseBlock)failure;
 
 @end
@@ -56,7 +60,7 @@ typedef enum {
     static DMGitHubClient *client = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-      client = [[DMGitHubClient alloc] init];
+      client = [[DMGitHubClient alloc] initWithBaseURL:[NSURL URLWithString:aBGHC_GitHubApiUrl]];
     });
     return client;
 }
@@ -74,7 +78,8 @@ typedef enum {
     static NSArray *searchScope = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-      searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched, searchScopeAll];
+//      searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched, searchScopeAll];
+      searchScope = @[searchScopeMine, searchScopeStarred, searchScopeWatched];
     });
     return searchScope;
 }
@@ -89,9 +94,9 @@ typedef enum {
 }
 
 #pragma mark init
-- (id)init {
-    self = [super init];
 
+- (instancetype)initWithBaseURL:(NSURL *)url {
+    self = [super initWithBaseURL:url];
     if (self) {
         self.username = [NSString new];
         self.accessToken = [NSString new];
@@ -105,12 +110,12 @@ typedef enum {
         self.tokenType   = [currentUser objectForKey:aBGHC_TokenType];
         if (self.accessToken && self.tokenType)
             self.httpHeaderTokenString = [NSString stringWithFormat:@"&%@=%@&%@=%@",
-                          aBGHC_AccessToken, _accessToken,
-                          aBGHC_TokenType, _tokenType];
+                                          aBGHC_AccessToken, _accessToken,
+                                          aBGHC_TokenType, _tokenType];
         else self.httpHeaderTokenString = @"";
+        
+        _requestsCancelled = NO;
     }
-    NSLog(@"AccesToken : %@",self.accessToken);
-    NSLog(@"httpHeaderToken : %@", self.httpHeaderTokenString);
     return self;
 }
 
@@ -161,6 +166,14 @@ typedef enum {
 
 - (NSString *)currentUsername {
     return self.username;
+}
+
+- (void)cancelNetworkRequests {
+    NSLog(@"Current Operations: %lu", (unsigned long)self.operationQueue.operationCount);
+    [[self operationQueue] cancelAllOperations];
+    NSLog(@"Cancelling Queue");
+    NSLog(@"After Cancel: %lu", (unsigned long)self.operationQueue.operationCount);
+    _requestsCancelled = YES;
 }
 
 - (void)createNewAccountWithUsername:(NSString *)username accessToken:(NSString *)accessToken andTokenType:(NSString *)tokenType {
@@ -314,11 +327,14 @@ typedef enum {
 
 -(void)performNetworkRequestWithURLRequest:(NSURLRequest *)request successCallback:(JSONResponseBlock)success andErrorCallback:(ErrorResponseBlock)failure {
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        success(JSON);
+        if (_requestsCancelled) { }
+        else { success(JSON); _requestsCancelled = NO; }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        failure(JSON);
+        if (_requestsCancelled) { }
+        else {failure(JSON); _requestsCancelled = NO; }
     }];
-    [operation start];
+    [AFNetworkActivityIndicatorManager sharedManager] ;
+    [self enqueueHTTPRequestOperation:operation];
 }
 
 - (NSArray *)convertDictionaryToArray:(NSDictionary *)json {
