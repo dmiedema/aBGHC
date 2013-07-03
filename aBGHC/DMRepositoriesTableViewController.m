@@ -105,19 +105,11 @@
     NSLog(@"Section : %i", (int)indexPath.section);
     
     // Configure the cell...
+        
+    NSDictionary *current = _repos[indexPath.row];
     
-//    [cell addSubview:[DMRepositoryTableViewCell createTableViewCellWithBounds:cell.bounds andWithDictionary:[_repos objectAtIndex:indexPath.row]]];
-    
-    NSDictionary *current;
-    
-//    if (tableView == self.searchDisplayController.searchResultsTableView) {
-//        current = [_searchResults objectAtIndex:indexPath.row];
-//    } else {
-//        current = [_repos objectAtIndex:indexPath.row];
-//    }
-    current = _repos[indexPath.row];
-    cell.textLabel.text = [current objectForKey:@"name"];
-    cell.detailTextLabel.text = [[current objectForKey:@"owner"] objectForKey:@"login"];
+    cell.textLabel.text = current[@"name"];
+    cell.detailTextLabel.text = current[@"owner"][@"login"];
     
     cell.detailTextLabel.textColor = [UIColor darkGrayColor];
     return cell;
@@ -126,13 +118,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 64;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return _segmentControl.frame.size.height;
-//    }
-//    return 0;
-//}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {

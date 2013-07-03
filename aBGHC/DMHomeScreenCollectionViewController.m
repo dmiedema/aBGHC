@@ -75,7 +75,7 @@
     DMHomeScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     
     UILabel *label = [UILabel new];
-    label.text = [_options objectAtIndex:indexPath.row];
+    label.text = _options[indexPath.row];
     label.frame = CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height-1);
     label.backgroundColor = [UIColor whiteColor];
     
@@ -85,7 +85,7 @@
 //    DMHomeScreenCellTopView *topView = [DMHomeScreenCellTopView new];
     DMHomeScreenCellTopView *topView = [[DMHomeScreenCellTopView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height - 1)];
 //    topView.bounds = CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height -1);
-    topView.labelContents = [_options objectAtIndex:indexPath.row];
+    topView.labelContents = _options[indexPath.row];
 //
 //    NSLog(@"Top View : %@", topView);
     cell.backgroundColor = [UIColor grayColor];
@@ -116,8 +116,8 @@
 //}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *selectedItem = [_options objectAtIndex:indexPath.row];
-    NSLog(@"Selected Item : %@", [_options objectAtIndex:indexPath.row]);
+    NSString *selectedItem = _options[indexPath.row];
+    NSLog(@"Selected Item : %@", _options[indexPath.row]);
     
     if ([selectedItem isEqualToString:@"Notifications"]) {
         DMNotificationsTableViewController *notificationsController = [self.storyboard instantiateViewControllerWithIdentifier:@"DMNotificationsController"];
