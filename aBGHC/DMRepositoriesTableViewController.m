@@ -84,16 +84,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-//    if (tableView == self.searchDisplayController.searchResultsTableView)
-//        return [_searchResults count];
-    
     return [_repos count];
 }
 
