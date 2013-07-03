@@ -37,6 +37,9 @@
     // Set window to root view controller
     [self.window setRootViewController:rootView];
     
+    // Enable shared network request manager
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     ////
     //#if TESTING
     //
