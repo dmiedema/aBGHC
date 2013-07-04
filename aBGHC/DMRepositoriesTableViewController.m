@@ -162,7 +162,7 @@
 #pragma mark - Private Methods
 - (void)updateTable {
     [self.tableView reloadData];
-//    self.tableView.contentOffset = CGPointMake(0.0, self.searchDisplayController.searchBar.frame.size.height);
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 
 - (void)segmentControlChanged:(UISegmentedControl *)sender {
@@ -331,7 +331,6 @@ for (APLProduct *product in self.products)
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -340,7 +339,9 @@ for (APLProduct *product in self.products)
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected - %@", _repos[indexPath.row]);
+}
 
- */
 
 @end
