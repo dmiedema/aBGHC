@@ -52,6 +52,8 @@
 		C3CFDEDA1774254400B57FEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDED91774254400B57FEF /* SystemConfiguration.framework */; };
 		C3CFDEDC1774255100B57FEF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */; };
 		C3CFDEE11777762500B57FEF /* DMHomeScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CFDEE01777762500B57FEF /* DMHomeScreenCollectionViewCell.m */; };
+		C3D1B96A178556F60029D460 /* DMRepositoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D1B969178556F60029D460 /* DMRepositoryDetailViewController.m */; };
+		C3D1B96C178BD0670029D460 /* placeholder_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D1B96B178BD0670029D460 /* placeholder_1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,9 @@
 		C3CFDEDB1774255100B57FEF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C3CFDEDF1777762500B57FEF /* DMHomeScreenCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeScreenCollectionViewCell.h; sourceTree = "<group>"; };
 		C3CFDEE01777762500B57FEF /* DMHomeScreenCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeScreenCollectionViewCell.m; sourceTree = "<group>"; };
+		C3D1B968178556F60029D460 /* DMRepositoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRepositoryDetailViewController.h; sourceTree = "<group>"; };
+		C3D1B969178556F60029D460 /* DMRepositoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRepositoryDetailViewController.m; sourceTree = "<group>"; };
+		C3D1B96B178BD0670029D460 /* placeholder_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +188,8 @@
 		16B9A0651770325700A15617 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C36CDAF5177AC4A4004AF0A4 /* Repositories */,
+				C3D1B967178556DD0029D460 /* Repository Details */,
+				C36CDAF5177AC4A4004AF0A4 /* Repositories List */,
 				C36CDAEC177AA762004AF0A4 /* HomeScreen */,
 				C36CDAED177AA768004AF0A4 /* Settings */,
 				C36CDAEE177AA770004AF0A4 /* Notifications */,
@@ -276,6 +282,7 @@
 		16DC83281770012100523125 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3D1B96B178BD0670029D460 /* placeholder_1.png */,
 				16B9A053177022AF00A15617 /* aBGHCConstants.h */,
 				16DC83291770012100523125 /* aBGHC-Info.plist */,
 				16DC832A1770012100523125 /* InfoPlist.strings */,
@@ -371,13 +378,22 @@
 			name = Accounts;
 			sourceTree = "<group>";
 		};
-		C36CDAF5177AC4A4004AF0A4 /* Repositories */ = {
+		C36CDAF5177AC4A4004AF0A4 /* Repositories List */ = {
 			isa = PBXGroup;
 			children = (
 				C36CDAF6177AC4B8004AF0A4 /* DMRepositoriesTableViewController.h */,
 				C36CDAF7177AC4B8004AF0A4 /* DMRepositoriesTableViewController.m */,
 			);
-			name = Repositories;
+			name = "Repositories List";
+			sourceTree = "<group>";
+		};
+		C3D1B967178556DD0029D460 /* Repository Details */ = {
+			isa = PBXGroup;
+			children = (
+				C3D1B968178556F60029D460 /* DMRepositoryDetailViewController.h */,
+				C3D1B969178556F60029D460 /* DMRepositoryDetailViewController.m */,
+			);
+			name = "Repository Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,6 +473,7 @@
 				16DC832C1770012100523125 /* InfoPlist.strings in Resources */,
 				16B9A0521770229D00A15617 /* Main.storyboard in Resources */,
 				16DC83341770012100523125 /* Default.png in Resources */,
+				C3D1B96C178BD0670029D460 /* placeholder_1.png in Resources */,
 				16DC83361770012100523125 /* Default@2x.png in Resources */,
 				16DC83381770012100523125 /* Default-568h@2x.png in Resources */,
 			);
@@ -529,6 +546,7 @@
 				16B9A0881770B56500A15617 /* User.m in Sources */,
 				16B9A0851770B56400A15617 /* Commit.m in Sources */,
 				16B9A0501770229800A15617 /* DMSettingsTableViewController.m in Sources */,
+				C3D1B96A178556F60029D460 /* DMRepositoryDetailViewController.m in Sources */,
 				16B9A04A1770228C00A15617 /* DMGitHubClient.m in Sources */,
 				C33261361780E79100D4D13B /* DMRepositoryTableViewCell.m in Sources */,
 				C3CFDEE11777762500B57FEF /* DMHomeScreenCollectionViewCell.m in Sources */,

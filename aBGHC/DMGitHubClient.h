@@ -46,7 +46,8 @@ typedef enum {
 // Create new Account
 - (void)createNewAccountWithUsername:(NSString *)username accessToken:(NSString *)accessToken andTokenType:(NSString *)tokenType;
 // Load repository content
-- (void)loadRepositoryInformation:(repositoryContentType)infoType forRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)error;
+- (void)loadRepositoryInformation:(repositoryContentType)infoType forRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure;
+- (void)getNumberOfStarsForRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure;
 // Load repository details
 - (void)loadRepositoriesWithOptions:(repositoryTypesToLoad)repoType onSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure;
 // Load a particular file
