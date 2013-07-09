@@ -28,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"DETAILTS");
+    NSLog(@"%@", _details);
 	// Do any additional setup after loading the view.
     NSDictionary *ownerDetails = _details[@"owner"];
     
@@ -62,13 +64,13 @@
     _checkStatsButton.titleLabel.text = @"Stats";
     [_checkStatsButton addTarget:self action:@selector(openStatus:) forControlEvents:UIControlEventTouchUpInside];
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(_ownerAvatar, _reponameLabel, _usernameLabel, _descriptionLabel, _forkButton, _starButton, _watchButton, _readmeButton, _checkCodeButton, _checkCommitsButton, _checkStatsButton);
-    
-    NSString *layoutString = @"";
-    
-    NSArray *appliedConstraints = [NSLayoutConstraint constraintsWithVisualFormat:layoutString options:NSLayoutFormatAlignAllBaseline metrics:Nil views:views];
-
-    [self.view addConstraints:appliedConstraints];
+//    NSDictionary *views = NSDictionaryOfVariableBindings(_ownerAvatar, _reponameLabel, _usernameLabel, _descriptionLabel, _forkButton, _starButton, _watchButton, _readmeButton, _checkCodeButton, _checkCommitsButton, _checkStatsButton);
+//    
+//    NSString *layoutString = @"";
+//    
+//    NSArray *appliedConstraints = [NSLayoutConstraint constraintsWithVisualFormat:layoutString options:NSLayoutFormatAlignAllBaseline metrics:Nil views:views];
+//
+//    [self.view addConstraints:appliedConstraints];
 }
 
 - (void)didReceiveMemoryWarning

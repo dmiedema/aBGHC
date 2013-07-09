@@ -8,6 +8,7 @@
 
 #import "DMRepositoriesTableViewController.h"
 #import "DMRepositoryTableViewCell.h"
+#import "DMRepositoryDetailViewController.h"
 
 @interface DMRepositoriesTableViewController ()
 //@property (nonatomic) NSMutableArray *searchResults;
@@ -341,6 +342,10 @@ for (APLProduct *product in self.products)
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected - %@", _repos[indexPath.row]);
+    
+    DMRepositoryDetailViewController *detailController = [self.storyboard instantiateViewControllerWithIdentifier:@"DMRepositoryDetailViewController"];
+    detailController.details = _repos[indexPath.row];
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 
