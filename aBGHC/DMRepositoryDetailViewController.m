@@ -50,9 +50,25 @@
     _starButton.titleLabel.text = [NSString stringWithFormat:@"%i - Stars", starCount];
     _watchButton.titleLabel.text = [NSString stringWithFormat:@"%@ - Watchers", _details[@"watchers_count"]];
     
-    _readmeButton;
-    _checkCodeButton;
-    _checkCommitsButton;
+    _readmeButton.titleLabel.text = @"Readme";
+    [_readmeButton addTarget:self action:@selector(openReadme:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _checkCodeButton.titleLabel.text = @"Code";
+    [_checkCodeButton addTarget:self action:@selector(openCode:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _checkCommitsButton.titleLabel.text = @"Commits";
+    [_checkCommitsButton addTarget:self action:@selector(openCommits:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _checkStatsButton.titleLabel.text = @"Stats";
+    [_checkStatsButton addTarget:self action:@selector(openStatus:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSDictionary *views = NSDictionaryOfVariableBindings(_ownerAvatar, _reponameLabel, _usernameLabel, _descriptionLabel, _forkButton, _starButton, _watchButton, _readmeButton, _checkCodeButton, _checkCommitsButton, _checkStatsButton);
+    
+    NSString *layoutString = @"";
+    
+    NSArray *appliedConstraints = [NSLayoutConstraint constraintsWithVisualFormat:layoutString options:NSLayoutFormatAlignAllBaseline metrics:Nil views:views];
+
+    [self.view addConstraints:appliedConstraints];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,6 +95,9 @@
 }
 
 - (IBAction)openCode:(UIButton *)sender {
+}
+
+- (IBAction)openStatus:(UIButton *)sender {
 }
 
 @end
