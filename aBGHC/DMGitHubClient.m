@@ -216,24 +216,6 @@ typedef enum {
   [self performNetworkRequestWithURLRequest:request successCallback:success andErrorCallback:failure];
 }
 
-- (void)getNumberOfStarsForRepo:(NSDictionary *)repository withSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {
-    // GET /repos/:owner/:repo/stargazers
-    NSString *urlString = [NSString stringWithFormat:@"%@/repos/%@/%@/stargazers?%@", aBGHC_GitHubApiUrl, repository[@"owner"], repository[@"name"], _httpHeaderTokenString];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        success(JSON);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Error loading NumberOfStarsForRepo");
-        NSLog(@"TRACE : DMGitHubClient -- getNumberOfStarsForRepo -- ");
-        NSLog(@"Error : %@", error);
-        NSLog(@"Error JSON: %@", JSON);
-        failure(JSON);
-    }];
-    [operation start];
-}
-
 - (void)loadRepositoriesWithOptions:(repositoryTypesToLoad)repoType onSuccess:(JSONResponseBlock)success andError:(ErrorResponseBlock)failure {
   NSString *urlString;
   switch (repoType) {
