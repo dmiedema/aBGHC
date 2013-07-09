@@ -10,6 +10,8 @@
 
 @interface DMRepositoryDetailViewController : UIViewController
 
+@property (nonatomic, strong) UIScrollView *scrollView;
+
 @property (nonatomic, weak) IBOutlet UIImageView *ownerAvatar;
 @property (nonatomic, weak) IBOutlet UILabel *usernameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *reponameLabel;
@@ -32,4 +34,5 @@
 - (IBAction)openReadme:(UIButton *)sender;
 - (IBAction)openCommits:(UIButton *)sender;
 - (IBAction)openCode:(UIButton *)sender;
+- (IBAction)openStatus:(UIButton *)sender;
 @end

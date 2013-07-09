@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UIFontDescriptor *subtitleFontDescriptor;
 @property (nonatomic, strong) UIFontDescriptor *headerFontDescriptor;
 
+@property NSInteger starCount;
+
 @end
 
 @implementation DMRepositoryDetailViewController
@@ -32,25 +34,20 @@
     NSLog(@"%@", _details);
 	// Do any additional setup after loading the view.
     NSDictionary *ownerDetails = _details[@"owner"];
+ 
+    _scrollView = [UIScrollView new];
     
     [_ownerAvatar setImageWithURL:[NSURL URLWithString:ownerDetails[@"avatar_url"]] placeholderImage:[UIImage imageNamed:@"placeholder_1"]];
     
     _reponameLabel.text = _details[@"name"];
     _usernameLabel.text = ownerDetails[@"login"];
+    _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _descriptionLabel.numberOfLines = 0;
     _descriptionLabel.text = _details[@"description"];
     
-    __block int starCount;
-    [[DMGitHubClient sharedInstance] getNumberOfStarsForRepo:@{@"owner": ownerDetails[@"login"], @"name": _details[@"name"]} withSuccess:^(id JSON) {
-        if ([JSON isKindOfClass:[NSArray class]]) {
-            starCount = [JSON count];
-        }
-    } andError:^(NSDictionary *error) {
-        
-    }];
-    
-    _forkButton.titleLabel.text = [NSString stringWithFormat:@"%@ - Forks", _details[@"forks_count"]];
-    _starButton.titleLabel.text = [NSString stringWithFormat:@"%i - Stars", starCount];
-    _watchButton.titleLabel.text = [NSString stringWithFormat:@"%@ - Watchers", _details[@"watchers_count"]];
+    [_forkButton setTitle:[NSString stringWithFormat:@"%@ - Forks", _details[@"forks_count"]] forState:UIControlStateNormal];
+    [_starButton setTitle:[NSString stringWithFormat:@"%@ - Stars", _details[@"watchers_count"] ] forState:UIControlStateNormal];
+    [_watchButton setTitle:@"Watch" forState:UIControlStateNormal];
     
     _readmeButton.titleLabel.text = @"Readme";
     [_readmeButton addTarget:self action:@selector(openReadme:) forControlEvents:UIControlEventTouchUpInside];
@@ -64,13 +61,34 @@
     _checkStatsButton.titleLabel.text = @"Stats";
     [_checkStatsButton addTarget:self action:@selector(openStatus:) forControlEvents:UIControlEventTouchUpInside];
     
-//    NSDictionary *views = NSDictionaryOfVariableBindings(_ownerAvatar, _reponameLabel, _usernameLabel, _descriptionLabel, _forkButton, _starButton, _watchButton, _readmeButton, _checkCodeButton, _checkCommitsButton, _checkStatsButton);
-//    
-//    NSString *layoutString = @"";
-//    
-//    NSArray *appliedConstraints = [NSLayoutConstraint constraintsWithVisualFormat:layoutString options:NSLayoutFormatAlignAllBaseline metrics:Nil views:views];
-//
-//    [self.view addConstraints:appliedConstraints];
+    NSDictionary *views = NSDictionaryOfVariableBindings(_ownerAvatar, _reponameLabel, _usernameLabel, _descriptionLabel, _forkButton, _starButton, _watchButton, _readmeButton, _checkCodeButton, _checkCommitsButton, _checkStatsButton);
+
+    NSString *layoutString = @"V:[_ownerAvatar]-[_descriptionLabel]-16-[_forkButton]-[_starButton]-[_watchButton]-16-[_readmeButton]-[_checkCodeButton]-[_checkCommitsButton]-[_checkStatsButton]";
+
+    NSArray *appliedConstraints = [NSLayoutConstraint constraintsWithVisualFormat:layoutString options:nil metrics:nil views:views];
+
+    [self.view addConstraints:appliedConstraints];
+
+    
+    _scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
+        _ownerAvatar.frame.size.height +
+        _descriptionLabel.frame.size.height +
+        _forkButton.frame.size.height +
+        _starButton.frame.size.height +
+        _watchButton.frame.size.height +
+        _readmeButton.frame.size.height +
+        _checkCodeButton.frame.size.height +
+        _checkCommitsButton.frame.size.height +
+        _checkStatsButton.frame.size.height);
+
+    [_scrollView addSubview:self.view];
+    self.view = _scrollView;
+    
+}
+
+- (void)viewDidLayoutSubviews {
+    _ownerAvatar.layer.masksToBounds = YES;
+    _ownerAvatar.layer.cornerRadius = _ownerAvatar.bounds.size.width / 2.0;
 }
 
 - (void)didReceiveMemoryWarning
