@@ -42,9 +42,11 @@
     _reponameLabel.text = _details[@"name"];
     _usernameLabel.text = ownerDetails[@"login"];
     
+    _descriptionLabel.text = _details[@"description"];
     _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _descriptionLabel.numberOfLines = 0;
-    _descriptionLabel.text = _details[@"description"];
+    _descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//    _descriptionLabel.constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:||" options:<#(NSLayoutFormatOptions)#> metrics:<#(NSDictionary *)#> views:<#(NSDictionary *)#>]
     
     [_forkButton setTitle:[NSString stringWithFormat:@"%@ - Forks", _details[@"forks_count"]] forState:UIControlStateNormal];
     [_starButton setTitle:[NSString stringWithFormat:@"%@ - Stars", _details[@"watchers_count"] ] forState:UIControlStateNormal];
@@ -85,6 +87,11 @@
     [_scrollView addSubview:self.view];
     self.view = _scrollView;
     
+}
+
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    _descriptionLabel.preferredMaxLayoutWidth = self.view.bounds.size.width - 40;
 }
 
 - (void)viewDidLayoutSubviews {
