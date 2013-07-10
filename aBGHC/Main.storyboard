@@ -195,7 +195,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jeL-8d-h5J">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jeL-8d-h5J">
                                 <rect key="frame" x="8" y="8" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <constraints>
@@ -203,27 +203,27 @@
                                     <constraint firstAttribute="height" constant="100" id="v1x-GH-RC8"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repo Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-SO-7yV">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repo Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-SO-7yV">
                                 <rect key="frame" x="116" y="8" width="184" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline2"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repo Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lge-5A-aaA">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repo Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lge-5A-aaA">
                                 <rect key="frame" x="116" y="37" width="184" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead1"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWH-ip-4eP">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWH-ip-4eP">
                                 <rect key="frame" x="8" y="116" width="301" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZq-dL-t4l">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZq-dL-t4l">
                                 <rect key="frame" x="8" y="145" width="301" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -238,7 +238,7 @@
                                     <action selector="forkRepo:" destination="w4e-0O-azK" eventType="touchUpInside" id="QaS-a6-tqo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWO-o2-bdL">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWO-o2-bdL">
                                 <rect key="frame" x="8" y="197" width="292" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -253,7 +253,7 @@
                                     <action selector="starRepo:" destination="w4e-0O-azK" eventType="touchUpInside" id="IqW-X1-WjO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnl-1N-lzD">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnl-1N-lzD">
                                 <rect key="frame" x="8" y="249" width="301" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -268,7 +268,7 @@
                                     <action selector="watchRepo:" destination="w4e-0O-azK" eventType="touchUpInside" id="N0O-td-VC3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9P-dd-Dq1">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9P-dd-Dq1">
                                 <rect key="frame" x="8" y="301" width="301" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -283,7 +283,7 @@
                                     <action selector="openReadme:" destination="w4e-0O-azK" eventType="touchUpInside" id="mVB-MG-QHl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agB-0R-tQ9">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agB-0R-tQ9">
                                 <rect key="frame" x="8" y="353" width="301" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -298,7 +298,7 @@
                                     <action selector="openCommits:" destination="w4e-0O-azK" eventType="touchUpInside" id="DBb-4f-WvG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3W-R5-Z7E">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3W-R5-Z7E">
                                 <rect key="frame" x="8" y="405" width="301" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -327,39 +327,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="agB-0R-tQ9" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="76j-au-bVr"/>
-                            <constraint firstItem="Bnl-1N-lzD" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="A2R-V2-CrG"/>
-                            <constraint firstAttribute="trailing" secondItem="fZq-dL-t4l" secondAttribute="trailing" symbolic="YES" id="DsY-mX-nYn"/>
-                            <constraint firstItem="CWO-o2-bdL" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="FNx-kc-Vsq"/>
-                            <constraint firstItem="ev3-SO-7yV" firstAttribute="leading" secondItem="jeL-8d-h5J" secondAttribute="trailing" constant="8" id="H6C-MK-LT9"/>
-                            <constraint firstItem="lge-5A-aaA" firstAttribute="top" secondItem="ev3-SO-7yV" secondAttribute="bottom" constant="8" id="Kt3-9o-mX3"/>
-                            <constraint firstItem="Bnl-1N-lzD" firstAttribute="top" secondItem="CWO-o2-bdL" secondAttribute="bottom" constant="8" id="L2C-0c-rDE"/>
-                            <constraint firstItem="jeL-8d-h5J" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" constant="8" id="Mps-Nc-eTi"/>
-                            <constraint firstItem="fZq-dL-t4l" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="ONt-RU-vhX"/>
-                            <constraint firstItem="SWH-ip-4eP" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="RuO-lC-Ye7"/>
-                            <constraint firstItem="s9P-dd-Dq1" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="Snc-7T-nag"/>
-                            <constraint firstItem="fZq-dL-t4l" firstAttribute="top" secondItem="SWH-ip-4eP" secondAttribute="bottom" constant="8" id="T0K-dH-Xza"/>
-                            <constraint firstItem="Bnl-1N-lzD" firstAttribute="top" secondItem="CWO-o2-bdL" secondAttribute="bottom" constant="8" id="ZBS-1j-ig9"/>
-                            <constraint firstItem="lge-5A-aaA" firstAttribute="leading" secondItem="jeL-8d-h5J" secondAttribute="trailing" constant="8" id="ZMd-hL-WGX"/>
-                            <constraint firstAttribute="trailing" secondItem="s9P-dd-Dq1" secondAttribute="trailing" symbolic="YES" id="Zd4-No-GY0"/>
-                            <constraint firstAttribute="trailing" secondItem="fZq-dL-t4l" secondAttribute="trailing" symbolic="YES" id="bVj-hb-ZBI"/>
-                            <constraint firstItem="fZq-dL-t4l" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="br6-B0-Git"/>
-                            <constraint firstAttribute="trailing" secondItem="agB-0R-tQ9" secondAttribute="trailing" symbolic="YES" id="e0E-hn-aIv"/>
-                            <constraint firstItem="f3W-R5-Z7E" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="jEi-VX-Ydf"/>
-                            <constraint firstAttribute="trailing" secondItem="Bnl-1N-lzD" secondAttribute="trailing" symbolic="YES" id="jhs-R4-OFN"/>
-                            <constraint firstItem="CWO-o2-bdL" firstAttribute="top" secondItem="fZq-dL-t4l" secondAttribute="bottom" constant="8" id="lvB-mQ-7Xt"/>
-                            <constraint firstAttribute="trailing" secondItem="Bnl-1N-lzD" secondAttribute="trailing" symbolic="YES" id="mSy-OG-1hr"/>
-                            <constraint firstAttribute="trailing" secondItem="CWO-o2-bdL" secondAttribute="trailing" symbolic="YES" id="mWq-oY-AnT"/>
-                            <constraint firstItem="fZq-dL-t4l" firstAttribute="top" secondItem="SWH-ip-4eP" secondAttribute="bottom" constant="8" id="mjS-ue-n2v"/>
-                            <constraint firstItem="SWH-ip-4eP" firstAttribute="top" secondItem="jeL-8d-h5J" secondAttribute="bottom" constant="8" id="qjF-g3-GFl"/>
-                            <constraint firstItem="s9P-dd-Dq1" firstAttribute="top" secondItem="Bnl-1N-lzD" secondAttribute="bottom" constant="16" id="tg8-DI-cJX"/>
-                            <constraint firstAttribute="trailing" secondItem="SWH-ip-4eP" secondAttribute="trailing" symbolic="YES" id="uC1-6V-Dg3"/>
-                            <constraint firstItem="Bnl-1N-lzD" firstAttribute="leading" secondItem="PQC-Ez-dII" secondAttribute="leading" symbolic="YES" id="wu2-bc-EhF"/>
-                            <constraint firstAttribute="trailing" secondItem="f3W-R5-Z7E" secondAttribute="trailing" symbolic="YES" id="yuK-CJ-GGZ"/>
-                            <constraint firstItem="jeL-8d-h5J" firstAttribute="top" secondItem="PQC-Ez-dII" secondAttribute="top" constant="8" id="zfW-td-fRi"/>
-                            <constraint firstItem="ev3-SO-7yV" firstAttribute="top" secondItem="PQC-Ez-dII" secondAttribute="top" constant="8" id="zlN-97-C5p"/>
-                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -574,7 +541,7 @@
                 <relationship kind="action" name="openCode:" candidateClass="UIButton"/>
                 <relationship kind="action" name="openCommits:" candidateClass="UIButton"/>
                 <relationship kind="action" name="openReadme:" candidateClass="UIButton"/>
-                <relationship kind="action" name="openStatus:" candidateClass="UIButton"/>
+                <relationship kind="action" name="openStats:" candidateClass="UIButton"/>
                 <relationship kind="action" name="starRepo:" candidateClass="UIButton"/>
                 <relationship kind="action" name="watchRepo:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="checkCodeButton" candidateClass="UIButton"/>

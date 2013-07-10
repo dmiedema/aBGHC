@@ -30,8 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"DETAILTS");
-    NSLog(@"%@", _details);
+    NSLog(@"DETAILS");
+//    NSLog(@"%@", _details);
 	// Do any additional setup after loading the view.
     NSDictionary *ownerDetails = _details[@"owner"];
  
@@ -41,6 +41,7 @@
     
     _reponameLabel.text = _details[@"name"];
     _usernameLabel.text = ownerDetails[@"login"];
+    
     _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _descriptionLabel.numberOfLines = 0;
     _descriptionLabel.text = _details[@"description"];
@@ -59,13 +60,13 @@
     [_checkCommitsButton addTarget:self action:@selector(openCommits:) forControlEvents:UIControlEventTouchUpInside];
     
     _checkStatsButton.titleLabel.text = @"Stats";
-    [_checkStatsButton addTarget:self action:@selector(openStatus:) forControlEvents:UIControlEventTouchUpInside];
+    [_checkStatsButton addTarget:self action:@selector(openStats:) forControlEvents:UIControlEventTouchUpInside];
     
     NSDictionary *views = NSDictionaryOfVariableBindings(_ownerAvatar, _reponameLabel, _usernameLabel, _descriptionLabel, _forkButton, _starButton, _watchButton, _readmeButton, _checkCodeButton, _checkCommitsButton, _checkStatsButton);
 
-    NSString *layoutString = @"V:[_ownerAvatar]-[_descriptionLabel]-16-[_forkButton]-[_starButton]-[_watchButton]-16-[_readmeButton]-[_checkCodeButton]-[_checkCommitsButton]-[_checkStatsButton]";
+    NSString *layoutString = @"V:|-8-[_ownerAvatar(100@100)]-[_descriptionLabel(>=44@75)]-16-[_forkButton]-[_starButton]-[_watchButton]-16-[_readmeButton]-[_checkCodeButton]-[_checkCommitsButton]-[_checkStatsButton]|";
 
-    NSArray *appliedConstraints = [NSLayoutConstraint constraintsWithVisualFormat:layoutString options:nil metrics:nil views:views];
+    NSArray *appliedConstraints = [NSLayoutConstraint constraintsWithVisualFormat:layoutString options:NSLayoutFormatAlignAllLeft metrics:nil views:views];
 
     [self.view addConstraints:appliedConstraints];
 
@@ -100,24 +101,30 @@
 #pragma - mark Methods
 #pragma mark Actions
 - (IBAction)forkRepo:(UIButton *)sender {
-    
+    NSLog(@"fork Repo Pressed");
 }
 - (IBAction)starRepo:(UIButton *)sender {
+    NSLog(@"star Repo Pressed");
 }
 
 - (IBAction)watchRepo:(UIButton *)sender {
+    NSLog(@"watch Repo Pressed");
 }
 #pragma mark Navigation Push
 - (IBAction)openReadme:(UIButton *)sender {
+    NSLog(@"open Readme Pressed");
 }
 
 - (IBAction)openCommits:(UIButton *)sender {
+    NSLog(@"open Commits Pressed");
 }
 
 - (IBAction)openCode:(UIButton *)sender {
+    NSLog(@"open Code Pressed");
 }
 
-- (IBAction)openStatus:(UIButton *)sender {
+- (IBAction)openStats:(UIButton *)sender {
+    NSLog(@"open Stats Pressed");
 }
 
 @end

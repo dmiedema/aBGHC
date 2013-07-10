@@ -34,5 +34,5 @@
 - (IBAction)openReadme:(UIButton *)sender;
 - (IBAction)openCommits:(UIButton *)sender;
 - (IBAction)openCode:(UIButton *)sender;
-- (IBAction)openStatus:(UIButton *)sender;
+- (IBAction)openStats:(UIButton *)sender;
 @end
