@@ -12,7 +12,7 @@
 + (UIView *)createTableViewCellWithBounds:(CGRect)bounds andWithDictionary:(NSDictionary *)currentRepo {
     
     UIFontDescriptor *nameDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
-    UIFontDescriptor *subtitleDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleSubheadline2];
+    UIFontDescriptor *subtitleDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleSubheadline];
     //    static NSString *CellIdentifier = @"Repository Cell";
     // custom cell, gotta love that custom cell
     //    DMRepositoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];

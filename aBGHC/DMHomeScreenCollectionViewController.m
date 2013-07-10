@@ -80,7 +80,7 @@
     label.backgroundColor = [UIColor whiteColor];
     
 //    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontDescriptorTextStyleHeadline1];
-    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline1];
+    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline];
     label.font = [UIFont fontWithDescriptor:descriptor size:0.0];
 //    DMHomeScreenCellTopView *topView = [DMHomeScreenCellTopView new];
     DMHomeScreenCellTopView *topView = [[DMHomeScreenCellTopView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height - 1)];

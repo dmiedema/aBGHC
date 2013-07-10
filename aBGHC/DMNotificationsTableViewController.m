@@ -206,7 +206,7 @@
     }
     NSDictionary *dictionary = [notificationsForCurrentSectionsRepo objectAtIndex:[indexPath row]];
     
-    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline2];
+    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline];
     CGSize textSize = [[dictionary objectForKey:@"title"] sizeWithFont:[UIFont fontWithDescriptor:descriptor size:0.0] constrainedToSize:CGSizeMake(self.tableView.frame.size.width - PADDING * 4, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
     return textSize.height + (PADDING * 4);
 }
