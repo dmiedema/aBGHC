@@ -10,21 +10,21 @@
 
 @interface DMRepositoryDetailViewController : UIViewController
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
-@property (nonatomic, weak) IBOutlet UIImageView *ownerAvatar;
-@property (nonatomic, weak) IBOutlet UILabel *usernameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *reponameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
-// @property (nonatomic, weak) IBOutlet UILabel *repoDetailsLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *ownerAvatar;
+@property (nonatomic, strong) IBOutlet UILabel *usernameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *reponameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *descriptionLabel;
+// @property (nonatomic, strong) IBOutlet UILabel *repoDetailsLabel;
 
-@property (nonatomic, weak) IBOutlet UIButton *forkButton;
-@property (nonatomic, weak) IBOutlet UIButton *starButton;
-@property (nonatomic, weak) IBOutlet UIButton *watchButton;
-@property (nonatomic, weak) IBOutlet UIButton *readmeButton;
-@property (nonatomic, weak) IBOutlet UIButton *checkCommitsButton;
-@property (nonatomic, weak) IBOutlet UIButton *checkCodeButton;
-@property (nonatomic, weak) IBOutlet UIButton *checkStatsButton;
+@property (nonatomic, strong) IBOutlet UIButton *forkButton;
+@property (nonatomic, strong) IBOutlet UIButton *starButton;
+@property (nonatomic, strong) IBOutlet UIButton *watchButton;
+@property (nonatomic, strong) IBOutlet UIButton *readmeButton;
+@property (nonatomic, strong) IBOutlet UIButton *checkCommitsButton;
+@property (nonatomic, strong) IBOutlet UIButton *checkCodeButton;
+@property (nonatomic, strong) IBOutlet UIButton *checkStatsButton;
 
 @property (nonatomic, strong) NSDictionary *details;
 - (IBAction)forkRepo:(UIButton *)sender;

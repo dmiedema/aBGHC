@@ -163,6 +163,10 @@
     UIFont *font = [UIFont fontWithDescriptor:descriptor size:0.0];
     
     // setup title label
+//    titleLabel.font = font;
+//    titleLabel.numberOfLines = 0;
+//    titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    
     [titleLabel setFont:font];
     [titleLabel setNumberOfLines:0];
     [titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
